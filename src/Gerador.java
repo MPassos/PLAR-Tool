@@ -227,9 +227,9 @@ public class Gerador {
         for (int i = 0; i < cluster.size(); i++) {
             Cluster aux;
             aux = (Cluster) cluster.get(i);
-            ebuffer.write("\nsubgraph cluster" + i + "{\nlabel = \"" + aux.getClustername() + "\";\ncolor = black;\nstyle = bold;\n\n");
+            ebuffer.write("\nsubgraph cluster" + i + "{\nlabel = \"" + aux.getClustername() + "\";\ncolor = blue;\nstyle = bold;\n\n");
             for (int j = 0; j < aux.getElements().size(); j++) {
-               ebuffer.write("\"" + aux.getElements().get(j) + "\"" + "[label=" + "\"" + aux.getElements().get(j) + "\"" + ",shape=ellipse,color=red,fontcolor=black,style=\"\"];\n"); 
+               ebuffer.write("\"" + aux.getElements().get(j) + "\"" + "[label=" + "\"" + aux.getElements().get(j) + "\"" + ",shape=ellipse,color=blue,fontcolor=black,style=\"\"];\n"); 
             }
             ebuffer.write("}\n");
         }
