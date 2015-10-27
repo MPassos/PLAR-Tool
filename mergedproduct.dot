@@ -1,0 +1,14 @@
+digraph G {
+size= "10,10";
+rotate = 180;
+"And"[label="And",shape=ellipse,color=blue,fontcolor=black,style=""];
+"AtLeast"[label="AtLeast",shape=ellipse,color=red,fontcolor=black,style=""];
+"AtMost"[label="AtMost",shape=ellipse,color=red,fontcolor=black,style=""];
+"Equals"[label="Equals",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Implies"[label="Implies",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Literal"[label="Literal",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Node"[label="Node",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Not"[label="Not",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Or"[label="Or",shape=ellipse,color=blue,fontcolor=black,style=""];
+"SatSolver"[label="SatSolver",shape=ellipse,color=blue,fontcolor=black,style=""];
+}
