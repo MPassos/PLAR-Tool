@@ -11,4 +11,35 @@ rotate = 180;
 "Not"[label="Not",shape=ellipse,color=blue,fontcolor=black,style=""];
 "Or"[label="Or",shape=ellipse,color=blue,fontcolor=black,style=""];
 "SatSolver"[label="SatSolver",shape=ellipse,color=blue,fontcolor=black,style=""];
-}
+"And" -> "Node" [color=blue,font=6];
+"AtLeast" -> "And" [color=red,font=6];
+"AtLeast" -> "Node" [color=red,font=6];
+"AtMost" -> "And" [color=red,font=6];
+"AtMost" -> "Node" [color=red,font=6];
+"Equals" -> "And" [color=blue,font=6];
+"Equals" -> "Node" [color=blue,font=6];
+"Equals" -> "Not" [color=blue,font=6];
+"Equals" -> "Or" [color=blue,font=6];
+"Implies" -> "Node" [color=blue,font=6];
+"Implies" -> "Not" [color=blue,font=6];
+"Implies" -> "Or" [color=blue,font=6];
+"Literal" -> "Node" [color=blue,font=6];
+"Node" -> "And" [color=blue,font=6];
+"Node" -> "Literal" [color=blue,font=6];
+"Node" -> "Not" [color=blue,font=6];
+"Node" -> "Or" [color=blue,font=6];
+"Not" -> "And" [color=red,font=6];
+"Not" -> "AtLeast" [color=red,font=6];
+"Not" -> "AtMost" [color=red,font=6];
+"Not" -> "Literal" [color=red,font=6];
+"Not" -> "Node" [color=blue,font=6];
+"Not" -> "Or" [color=red,font=6];
+"Or" -> "And" [color=blue,font=6];
+"Or" -> "Node" [color=blue,font=6];
+"SatSolver" -> "And" [color=blue,font=6];
+"SatSolver" -> "Literal" [color=blue,font=6];
+"SatSolver" -> "Node" [color=blue,font=6];
+"SatSolver" -> "Or" [color=blue,font=6];
+subgraph cluster_0{
+"Equals"
+}}

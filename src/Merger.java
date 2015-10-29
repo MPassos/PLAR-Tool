@@ -197,7 +197,7 @@ public class Merger {
         int size1 = no1.size();
         int size2 = no2.size();
         int match = 0;
-        String comp1, comp2, com, var;
+        String comp1, comp2, dep1, dep2;
 
         if (size1 > size2) {
             ebuffer1.write("digraph G {\n" + "size= \"" + size1 + "," + size1 + "\";\n" + "rotate = 180;\n");
@@ -215,6 +215,24 @@ public class Merger {
                     ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=red,fontcolor=black,style=\"\"];\n");
                 }
             }
+
+            for (int i = 0; i < dependencias1.size(); i++) {
+                Node aux1 = (Node) dependencias1.get(i);
+                dep1 = aux1.getNode() + " " + aux1.getDepends();
+                match = 0;
+                for (int j = 0; j < dependencias2.size(); j++) {
+                    Node aux2 = (Node) dependencias2.get(j);
+                    dep2 = aux2.getNode() + " " + aux2.getDepends();
+                    if (dep1.equals(dep2)) {
+                        ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=blue,font=6];\n");
+                        match = 1;
+                    }
+                }
+                if (match == 0) {
+                    ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=red,font=6];\n");
+                }
+            }
+            ebuffer1.write("subgraph cluster_0{\n"+"\""+no1.get(1)+"\"\n}");
         } else {
             ebuffer1.write("digraph G {\n" + "size= \"" + size2 + "," + size2 + "\";\n" + "rotate = 180;\n");
             for (int i = 0; i < no2.size(); i++) {
@@ -231,6 +249,23 @@ public class Merger {
                     ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=red,fontcolor=black,style=\"\"];\n");
                 }
             }
+            for (int i = 0; i < dependencias2.size(); i++) {
+                Node aux1 = (Node) dependencias2.get(i);
+                dep1 = aux1.getNode() + " " + aux1.getDepends();
+                match = 0;
+                for (int j = 0; j < dependencias1.size(); j++) {
+                    Node aux2 = (Node) dependencias1.get(j);
+                    dep2 = aux2.getNode() + " " + aux2.getDepends();
+                    if (dep1.equals(dep2)) {
+                        ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=blue,font=6];\n");
+                        match = 1;
+                    }
+                }
+                if (match == 0) {
+                    ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=red,font=6];\n");
+                }
+            }
+            ebuffer1.write("subgraph cluster_0{\n"+"\""+no1.get(1)+"\"\n}");
         }
         ebuffer1.write("}");
         ebuffer1.close();
