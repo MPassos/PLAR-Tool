@@ -224,7 +224,7 @@ public class Merger {
                     Node aux2 = (Node) dependencias2.get(j);
                     dep2 = aux2.getNode() + " " + aux2.getDepends();
                     if (dep1.equals(dep2)) {
-                        ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=blue,font=6];\n");
+                        ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=\"#3366FF55\",font=6];\n");
                         match = 1;
                     }
                 }
@@ -232,7 +232,17 @@ public class Merger {
                     ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=red,font=6];\n");
                 }
             }
-            ebuffer1.write("subgraph cluster_0{\n"+"\""+no1.get(1)+"\"\n}");
+            ebuffer1.write("subgraph cluster_0{\nlabel = \"Varibility\";\n");
+            for(int i = 0; i< no1.size();i++)
+            {
+                ebuffer1.write("\""+no1.get(i)+"\";\n");
+            }
+            ebuffer1.write("}\nsubgraph cluster_1{\nlabel = \"Similarities\";\n");
+            for(int i = 0; i< no2.size();i++)
+            {
+                ebuffer1.write("\""+no2.get(i)+"\";\n");
+            }
+            ebuffer1.write("}");
         } else {
             ebuffer1.write("digraph G {\n" + "size= \"" + size2 + "," + size2 + "\";\n" + "rotate = 180;\n");
             for (int i = 0; i < no2.size(); i++) {
@@ -257,7 +267,7 @@ public class Merger {
                     Node aux2 = (Node) dependencias1.get(j);
                     dep2 = aux2.getNode() + " " + aux2.getDepends();
                     if (dep1.equals(dep2)) {
-                        ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=blue,font=6];\n");
+                        ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=\"#3366FF55\",font=6];\n");
                         match = 1;
                     }
                 }
@@ -265,7 +275,17 @@ public class Merger {
                     ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=red,font=6];\n");
                 }
             }
-            ebuffer1.write("subgraph cluster_0{\n"+"\""+no1.get(1)+"\"\n}");
+            ebuffer1.write("subgraph cluster_0{\nlabel = \"Variability\";\n");
+            for(int i = 0; i< no2.size();i++)
+            {
+                ebuffer1.write("\""+no2.get(i)+"\";\n");
+            }
+            ebuffer1.write("}\nsubgraph cluster_1{\nlabel = \"Similarities\" ;\n");
+            for(int i = 0; i< no1.size();i++)
+            {
+                ebuffer1.write("\""+no1.get(i)+"\";\n");
+            }
+            ebuffer1.write("}");
         }
         ebuffer1.write("}");
         ebuffer1.close();
