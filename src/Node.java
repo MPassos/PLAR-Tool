@@ -3,6 +3,7 @@ public class Node {
     private String node;
     private String depends;
     
+    
     /**
      * Class constructor
      * @param node receives the node name

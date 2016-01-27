@@ -311,7 +311,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Merger m = new Merger(product1, product2, "mergedproduct.dot");
             m.getDependencias();
             //m.printNode();
-            m.gerarGrafo();
+            m.generateGraph();
             JOptionPane.showMessageDialog(null, "Success", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Choose a file", "File not choosed", JOptionPane.ERROR_MESSAGE);
