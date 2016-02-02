@@ -62,21 +62,27 @@ public class Merger {
                 if ((c1 >= 48 && c1 <= 57) || c1 == 32) {
                     continue;
                 }
+               
                 /**
-                 * When the character read is a \n A new node is added to the
+                 * Ignores carriage \n
+                 */
+                if(c1 == 13 )
+                {
+                    continue;
+                }
+                
+                
+                 /**
+                 * When the character read is a ENTER A new node is added to the
                  * Vector
                  */
-                if (c1 == 13) {
+                if(c1 == 10)
+                {
                     no1.add(nome1);
                     nome1 = "";
                     continue;
                 }
-                /**
-                 * Ignores carriage returns
-                 */
-                if (c1 == 10) {
-                    continue;
-                }
+                
                 ch = (char) c1;
                 nome1 += Character.toString(ch);
             }
@@ -95,17 +101,20 @@ public class Merger {
                     nome1 = "";
                     continue;
                 }
-
-                if (c1 == 13) {
-                    dependencias1.add(node);
-                    node = new Node("", "");
-                    nome1 = "";
+                
+                if(c1 == 13)
+                {
                     continue;
                 }
-
-                if (c1 == 10) {
-                    continue;
+                
+                if(c1 == 10)
+                {
+                  dependencias1.add(node);
+                  node = new Node("", "");
+                  nome1 = "";
+                  continue;   
                 }
+                
                 ch = (char) c1;
                 nome1 += Character.toString(ch);
             }
@@ -124,21 +133,27 @@ public class Merger {
                 if ((c2 >= 48 && c2 <= 57) || c2 == 32) {
                     continue;
                 }
+                
                 /**
-                 * When the character read is a \n A new node is added to the
+                 * Ignores \n
+                 */
+                
+                if(c2 == 13)
+                {
+                    continue;
+                }
+                
+                /**
+                 * When the character read is a ENTER A new node is added to the
                  * Vector
                  */
-                if (c2 == 13) {
+                if(c2 == 10)
+                {
                     no2.add(nome2);
                     nome2 = "";
                     continue;
                 }
-                /**
-                 * Ignores carriage returns
-                 */
-                if (c2 == 10) {
-                    continue;
-                }
+                
                 ch = (char) c2;
                 nome2 += Character.toString(ch);
             }
@@ -159,15 +174,18 @@ public class Merger {
                 }
 
                 if (c2 == 13) {
+                    continue;
+                }
+
+                if (c2 == 10) {
                     dependencias2.add(node);
                     node = new Node("", "");
                     nome2 = "";
                     continue;
                 }
-
-                if (c2 == 10) {
-                    continue;
-                }
+                
+                
+                
                 ch = (char) c2;
                 nome2 += Character.toString(ch);
             }
