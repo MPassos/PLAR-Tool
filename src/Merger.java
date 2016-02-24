@@ -10,6 +10,7 @@ public class Merger {
 
     private File product1;
     private File product2;
+    private File folder;
     private FileReader leitor1;
     private FileReader leitor2;
     private FileWriter escritor;
@@ -20,6 +21,7 @@ public class Merger {
     private Vector dependencias1;
     private Vector no2;
     private Vector dependencias2;
+    private Vector<NodeCompare> folderdep;
 
     public Merger(File product1, File product2, String nomedoarquivo) throws FileNotFoundException {
         this.product1 = product1;
@@ -35,6 +37,13 @@ public class Merger {
         } catch (IOException e) {
             System.out.println("Arquivo não encontrado " + e);
         }
+    }
+
+    public Merger(File folder, String output) throws FileNotFoundException, IOException {
+        this.folder = folder;
+
+        escritor = new FileWriter(output);
+        ebuffer1 = new BufferedWriter(escritor);
     }
 
     public void getDependencias() throws IOException {
@@ -62,27 +71,24 @@ public class Merger {
                 if ((c1 >= 48 && c1 <= 57) || c1 == 32) {
                     continue;
                 }
-               
+
                 /**
                  * Ignores carriage \n
                  */
-                if(c1 == 13 )
-                {
+                if (c1 == 13) {
                     continue;
                 }
-                
-                
-                 /**
+
+                /**
                  * When the character read is a ENTER A new node is added to the
                  * Vector
                  */
-                if(c1 == 10)
-                {
+                if (c1 == 10) {
                     no1.add(nome1);
                     nome1 = "";
                     continue;
                 }
-                
+
                 ch = (char) c1;
                 nome1 += Character.toString(ch);
             }
@@ -101,20 +107,18 @@ public class Merger {
                     nome1 = "";
                     continue;
                 }
-                
-                if(c1 == 13)
-                {
+
+                if (c1 == 13) {
                     continue;
                 }
-                
-                if(c1 == 10)
-                {
-                  dependencias1.add(node);
-                  node = new Node("", "");
-                  nome1 = "";
-                  continue;   
+
+                if (c1 == 10) {
+                    dependencias1.add(node);
+                    node = new Node("", "");
+                    nome1 = "";
+                    continue;
                 }
-                
+
                 ch = (char) c1;
                 nome1 += Character.toString(ch);
             }
@@ -133,27 +137,24 @@ public class Merger {
                 if ((c2 >= 48 && c2 <= 57) || c2 == 32) {
                     continue;
                 }
-                
+
                 /**
                  * Ignores \n
                  */
-                
-                if(c2 == 13)
-                {
+                if (c2 == 13) {
                     continue;
                 }
-                
+
                 /**
                  * When the character read is a ENTER A new node is added to the
                  * Vector
                  */
-                if(c2 == 10)
-                {
+                if (c2 == 10) {
                     no2.add(nome2);
                     nome2 = "";
                     continue;
                 }
-                
+
                 ch = (char) c2;
                 nome2 += Character.toString(ch);
             }
@@ -183,9 +184,7 @@ public class Merger {
                     nome2 = "";
                     continue;
                 }
-                
-                
-                
+
                 ch = (char) c2;
                 nome2 += Character.toString(ch);
             }
@@ -214,7 +213,7 @@ public class Merger {
     public void generateGraph() throws IOException {
         int size1 = no1.size();
         int size2 = no2.size();
-        int graphsize = size1+size2;
+        int graphsize = size1 + size2;
         int i, j;
         i = j = 0;
         String comp1, comp2, dep1, dep2, var, com;
@@ -309,4 +308,124 @@ public class Merger {
         ebuffer1.close();
     }
 
+    public void getFolderDep() throws FileNotFoundException, IOException {
+        File files[];
+        files = folder.listFiles();
+        folderdep = new Vector(10, 1);
+        Vector no;
+        Vector dep;
+        int c1 = -1;
+        char ch;
+        Node node = new Node("", "");
+        String nome1 = "";
+
+        for (int i = 0; i < files.length; i++) {
+            leitor1 = new FileReader(files[i]);
+            lbuffer1 = new BufferedReader(leitor1);
+            NodeCompare aux = new NodeCompare();
+            no = aux.getNodename();
+            dep = aux.getDep();
+            
+            while (lbuffer1.ready()) {
+                
+                while (c1 != 35) {
+                    /**
+                     * The input file is subdivided into two sections that are
+                     * seperated by the # character
+                     */
+                    c1 = lbuffer1.read();
+                    /**
+                     * Ignore numbers and space
+                     */
+                    if ((c1 >= 48 && c1 <= 57) || c1 == 32) {
+                        continue;
+                    }
+                    
+                    /**
+                     * Ignores carriage \n
+                     */
+                    if (c1 == 13) {
+                        continue;
+                    }
+
+                    /**
+                     * When the character read is a ENTER A new node is added to
+                     * the Vector
+                     */
+                    if (c1 == 10) {
+                        no.add(nome1);
+                        
+                        nome1 = "";
+                        continue;
+                    }
+                    
+                    ch = (char) c1;
+                    nome1 += Character.toString(ch);
+                    
+                    //To get rid of strange characters
+                    if(nome1.charAt(0)>256)
+                    {
+                        char caux = nome1.charAt(1);
+                        nome1 = "";
+                        nome1+= caux;
+                    }
+                    
+                }
+                nome1 = "";
+                lbuffer1.readLine();
+
+                while (c1 != -1) {
+                    c1 = lbuffer1.read();
+
+                    if (c1 == 32) {
+                        if (node.getNode().equals("")) {
+                            node.setNode((String) no.get(Integer.parseInt(nome1) - 1));
+                        } else {
+                            node.setDepends((String) no.get(Integer.parseInt(nome1) - 1));
+                        }
+                        nome1 = "";
+                        continue;
+                    }
+
+                    if (c1 == 13) {
+                        continue;
+                    }
+
+                    if (c1 == 10) {
+                        dep.add(node);
+                        node = new Node("", "");
+                        nome1 = "";
+                        continue;
+                    }
+                    
+                    ch = (char) c1;
+                    nome1 += Character.toString(ch);
+                }
+                
+            }
+            folderdep.add(aux);
+        }
+    }
+    
+    public void printAll()
+    {
+        Vector<String> no;
+        Vector<Node> dep;
+        NodeCompare aux;
+        for(int i = 0; i< folderdep.size();i++)
+        {
+            System.out.println("Product "+ (i+1));
+            no = folderdep.get(i).getNodename();
+            dep = folderdep.get(i).getDep();
+            for(int j = 0; j<no.size();j++)
+            {
+                System.out.println(no.get(j));
+            }/*
+            for(int k = 0;k<dep.size();k++)
+            {
+                System.out.println(dep.get(k).getNode()+" "+dep.get(k).getDepends());
+            }*/
+        }
+       
+    }
 }

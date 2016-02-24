@@ -227,8 +227,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextField5.setEditable(false);
 
         jButton8.setText("Choose Folder");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Merge");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Choose a Folder:");
 
@@ -368,6 +378,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+           JFileChooser seletor = new JFileChooser();
+           seletor.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+           if(seletor.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+           {
+               folder = seletor.getSelectedFile();
+               jTextField5.setText(folder.getPath());
+               jTextField5.repaint();
+           }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        try {
+            Merger m = new Merger(folder, "mergedfolder.txt");
+            m.getFolderDep();
+            //m.printAll();
+            JOptionPane.showMessageDialog(null, "Success", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -432,4 +464,5 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private File output = null;
     private File product1 = null;
     private File product2 = null;
+    private File folder = null;
 }
