@@ -393,6 +393,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         try {
             Merger m = new Merger(folder, "mergedfolder.txt");
             m.getFolderDep();
+            m.merge();
             //m.printAll();
             JOptionPane.showMessageDialog(null, "Success", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {

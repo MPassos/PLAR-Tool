@@ -1,0 +1,42 @@
+Nodes:
+And Product 1 Product 2 Product 3 
+Equals Product 1 Product 2 
+Implies Product 1 Product 2 Product 3 
+Literal Product 1 Product 2 Product 3 
+Node Product 1 Product 2 Product 3 
+Not Product 1 Product 2 Product 3 
+Or Product 1 Product 2 Product 3 
+SatSolver Product 1 Product 2 
+AtLeast Product 2 
+AtMost Product 2 
+
+Dependencies:
+And Node Product 1 Product 2 Product 3 
+Equals And Product 1 Product 2 
+Equals Node Product 1 Product 2 
+Equals Not Product 1 Product 2 
+Equals Or Product 1 Product 2 
+Implies Node Product 1 Product 2 Product 3 
+Implies Not Product 1 Product 2 Product 3 
+Implies Or Product 1 Product 2 Product 3 
+Literal Node Product 1 Product 2 Product 3 
+Node And Product 1 Product 2 Product 3 
+Node Literal Product 1 Product 2 Product 3 
+Node Not Product 1 Product 2 Product 3 
+Node Or Product 1 Product 2 Product 3 
+Not Node Product 1 Product 2 Product 3 
+Or And Product 1 Product 2 Product 3 
+Or Node Product 1 Product 2 Product 3 
+SatSolver And Product 1 Product 2 
+SatSolver Literal Product 1 Product 2 
+SatSolver Node Product 1 Product 2 
+SatSolver Or Product 1 Product 2 
+AtLeast And Product 2 
+AtLeast Node Product 2 
+AtMost And Product 2 
+AtMost Node Product 2 
+Not And Product 2 
+Not AtLeast Product 2 
+Not AtMost Product 2 
+Not Literal Product 2 
+Not Or Product 2 

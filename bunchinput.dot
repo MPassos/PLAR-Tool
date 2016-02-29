@@ -1,0 +1,60 @@
+/* ------------------------------------------------------------ */
+/* created with bunch v3 */
+/* Objective Function value = 1.4285714285714288*/
+/* ------------------------------------------------------------ */
+
+digraph G {
+size= "10,10";
+rotate = 90;
+subgraph cluster0 {
+label = "(SS-L1):Node";
+color = black;
+style = bold;
+
+"Implies"[label="Implies",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Node"[label="Node",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Or"[label="Or",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Not"[label="Not",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Equals"[label="Equals",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+}
+subgraph cluster1 {
+label = "(SS-L1):And";
+color = black;
+style = bold;
+
+"SatSolver"[label="SatSolver",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Literal"[label="Literal",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"AtLeast"[label="AtLeast",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"AtMost"[label="AtMost",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"And"[label="And",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+}
+"Equals" -> "Not" [color=blue,font=6];
+"Equals" -> "And" [color=blue,font=6];
+"Equals" -> "Node" [color=blue,font=6];
+"Equals" -> "Or" [color=blue,font=6];
+"Literal" -> "Node" [color=blue,font=6];
+"Not" -> "Literal" [color=blue,font=6];
+"Not" -> "And" [color=blue,font=6];
+"Not" -> "AtMost" [color=blue,font=6];
+"Not" -> "AtLeast" [color=blue,font=6];
+"Not" -> "Node" [color=blue,font=6];
+"Not" -> "Or" [color=blue,font=6];
+"SatSolver" -> "Literal" [color=blue,font=6];
+"SatSolver" -> "And" [color=blue,font=6];
+"SatSolver" -> "Node" [color=blue,font=6];
+"SatSolver" -> "Or" [color=blue,font=6];
+"And" -> "Node" [color=blue,font=6];
+"Or" -> "And" [color=blue,font=6];
+"Or" -> "Node" [color=blue,font=6];
+"Node" -> "Literal" [color=blue,font=6];
+"Node" -> "Not" [color=blue,font=6];
+"Node" -> "And" [color=blue,font=6];
+"Node" -> "Or" [color=blue,font=6];
+"AtMost" -> "And" [color=blue,font=6];
+"AtMost" -> "Node" [color=blue,font=6];
+"Implies" -> "Not" [color=blue,font=6];
+"Implies" -> "Node" [color=blue,font=6];
+"Implies" -> "Or" [color=blue,font=6];
+"AtLeast" -> "And" [color=blue,font=6];
+"AtLeast" -> "Node" [color=blue,font=6];
+}

@@ -325,9 +325,9 @@ public class Merger {
             NodeCompare aux = new NodeCompare();
             no = aux.getNodename();
             dep = aux.getDep();
-            
+
             while (lbuffer1.ready()) {
-                
+
                 while (c1 != 35) {
                     /**
                      * The input file is subdivided into two sections that are
@@ -340,7 +340,7 @@ public class Merger {
                     if ((c1 >= 48 && c1 <= 57) || c1 == 32) {
                         continue;
                     }
-                    
+
                     /**
                      * Ignores carriage \n
                      */
@@ -354,22 +354,21 @@ public class Merger {
                      */
                     if (c1 == 10) {
                         no.add(nome1);
-                        
+
                         nome1 = "";
                         continue;
                     }
-                    
+
                     ch = (char) c1;
                     nome1 += Character.toString(ch);
-                    
+
                     //To get rid of strange characters
-                    if(nome1.charAt(0)>256)
-                    {
+                    if (nome1.charAt(0) > 256) {
                         char caux = nome1.charAt(1);
                         nome1 = "";
-                        nome1+= caux;
+                        nome1 += caux;
                     }
-                    
+
                 }
                 nome1 = "";
                 lbuffer1.readLine();
@@ -397,35 +396,138 @@ public class Merger {
                         nome1 = "";
                         continue;
                     }
-                    
+
                     ch = (char) c1;
                     nome1 += Character.toString(ch);
                 }
-                
+
             }
             folderdep.add(aux);
         }
     }
-    
-    public void printAll()
-    {
+
+    public void merge() throws IOException {
+        Vector<GraphNode> nodes = new Vector(10, 1);
+        Vector<GraphDep> deps = new Vector(10, 1);
+
+        for (int i = 0; i < folderdep.size(); i++) {
+            Vector<String> nodenames = folderdep.get(i).getNodename();
+            Vector<Node> depnames = folderdep.get(i).getDep();
+            for (int j = 0; j < nodenames.size(); j++) {
+                GraphNode naux = new GraphNode();
+                naux.setNodename(nodenames.get(j));
+                naux.setProducts("Product " + (i + 1));
+
+                if (nodes.isEmpty()) {
+                    //nodes.add(naux);
+                    nodes.add(new GraphNode()); //So the comparison can proceed
+
+                }
+
+                for (int k = 0; k < nodes.size(); k++) {
+
+                    if (nodes.get(k).getNodename() == null) {
+                        nodes.get(k).setNodename(naux.getNodename());
+                        nodes.get(k).setProducts("Product " + (i + 1));
+                        nodes.add(new GraphNode());
+                        break;
+                    }
+                    if (nodes.get(k).getNodename().equals(naux.getNodename())) {
+                        nodes.get(k).setVariability(false);
+                        nodes.get(k).setProducts("Product " + (i + 1));
+                        break;
+                    }
+
+                }
+            }
+
+            for (int a = 0; a < depnames.size(); a++) {
+                GraphDep daux = new GraphDep();
+                daux.setDependency(depnames.get(a).getNode() + " " + depnames.get(a).getDepends());
+                daux.setProducts("Product " + (i + 1));
+
+                if (deps.isEmpty()) {
+                    //deps.add(daux);
+                    deps.add(new GraphDep());
+                }
+
+                for (int b = 0; b < deps.size(); b++) {
+                    if (deps.get(b).getDependency() == null) {
+                        deps.get(b).setDependency(daux.getDependency());
+                        deps.get(b).setProducts("Product " + (i + 1));
+                        deps.add(new GraphDep());
+                        break;
+                    }
+                    if (deps.get(b).getDependency().equals(daux.getDependency())) {
+                        deps.get(b).setVariability(false);
+                        deps.get(b).setProducts("Product " + (i + 1));
+                        break;
+                    }
+                }
+            }
+        }
+        printReport(nodes, deps);
+        printBUNCH(deps);
+    }
+
+    public void printAll() {
         Vector<String> no;
         Vector<Node> dep;
         NodeCompare aux;
-        for(int i = 0; i< folderdep.size();i++)
-        {
-            System.out.println("Product "+ (i+1));
+        for (int i = 0; i < folderdep.size(); i++) {
+            System.out.println("Product " + (i + 1));
             no = folderdep.get(i).getNodename();
             dep = folderdep.get(i).getDep();
-            for(int j = 0; j<no.size();j++)
-            {
+            for (int j = 0; j < no.size(); j++) {
                 System.out.println(no.get(j));
-            }/*
-            for(int k = 0;k<dep.size();k++)
-            {
-                System.out.println(dep.get(k).getNode()+" "+dep.get(k).getDepends());
-            }*/
+            }
+            for (int k = 0; k < dep.size(); k++) {
+                System.out.println(dep.get(k).getNode() + " " + dep.get(k).getDepends());
+            }
         }
-       
+
+    }
+
+    private void printReport(Vector<GraphNode> node, Vector<GraphDep> dep) throws IOException {
+        File report = new File("report.txt");
+        FileWriter writer = new FileWriter(report);
+        BufferedWriter w = new BufferedWriter(writer);
+
+        w.write("Nodes:\n");
+        for (int i = 0; i < node.size()-1; i++) {
+          String aux = "";
+          aux += node.get(i).getNodename()+" ";
+          for(int j = 0; j<node.get(i).getProducts().size();j++)
+          {
+              aux += node.get(i).getProducts().get(j)+" ";
+          }
+          aux += "\n";
+          w.write(aux);
+        }
+        w.write("\nDependencies:\n");
+        for(int a = 0; a < dep.size()-1;a++)
+        {
+            String aux = "";
+            aux += dep.get(a).getDependency()+" ";
+            for(int b = 0; b< dep.get(a).getProducts().size();b++)
+            {
+                aux += dep.get(a).getProducts().get(b) +" ";
+            }
+            aux += "\n";
+            w.write(aux);
+        }
+        w.close();
+    }
+
+    private void printBUNCH(Vector<GraphDep> dep) throws IOException {
+        File bunch = new File("bunchinput");
+        FileWriter writer = new FileWriter(bunch);
+        BufferedWriter w = new BufferedWriter(writer);
+        
+        for(int i = 0;i<dep.size()-1;i++)
+        {
+            w.write(dep.get(i).getDependency()+"\n");
+        }
+        w.close();
     }
 }
