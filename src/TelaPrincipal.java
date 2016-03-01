@@ -391,7 +391,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         try {
-            Merger m = new Merger(folder, "mergedfolder.txt");
+            Merger m = new Merger(folder);
             m.getFolderDep();
             m.merge();
             //m.printAll();

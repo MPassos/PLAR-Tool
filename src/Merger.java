@@ -39,11 +39,8 @@ public class Merger {
         }
     }
 
-    public Merger(File folder, String output) throws FileNotFoundException, IOException {
+    public Merger(File folder) throws FileNotFoundException, IOException {
         this.folder = folder;
-
-        escritor = new FileWriter(output);
-        ebuffer1 = new BufferedWriter(escritor);
     }
 
     public void getDependencias() throws IOException {
@@ -444,6 +441,8 @@ public class Merger {
             for (int a = 0; a < depnames.size(); a++) {
                 GraphDep daux = new GraphDep();
                 daux.setDependency(depnames.get(a).getNode() + " " + depnames.get(a).getDepends());
+                daux.setNode(depnames.get(a).getNode());
+                daux.setDepends(depnames.get(a).getDepends());
                 daux.setProducts("Product " + (i + 1));
 
                 if (deps.isEmpty()) {
@@ -454,6 +453,8 @@ public class Merger {
                 for (int b = 0; b < deps.size(); b++) {
                     if (deps.get(b).getDependency() == null) {
                         deps.get(b).setDependency(daux.getDependency());
+                        deps.get(b).setNode(daux.getNode());
+                        deps.get(b).setDepends(daux.getDepends());
                         deps.get(b).setProducts("Product " + (i + 1));
                         deps.add(new GraphDep());
                         break;
@@ -468,6 +469,8 @@ public class Merger {
         }
         printReport(nodes, deps);
         printBUNCH(deps);
+        printACDC(deps);
+        printGraph(nodes,deps);
     }
 
     public void printAll() {
@@ -489,7 +492,7 @@ public class Merger {
     }
 
     private void printReport(Vector<GraphNode> node, Vector<GraphDep> dep) throws IOException {
-        File report = new File("report.txt");
+        File report = new File("output/report.txt");
         FileWriter writer = new FileWriter(report);
         BufferedWriter w = new BufferedWriter(writer);
 
@@ -520,7 +523,7 @@ public class Merger {
     }
 
     private void printBUNCH(Vector<GraphDep> dep) throws IOException {
-        File bunch = new File("bunchinput");
+        File bunch = new File("output/bunchinput");
         FileWriter writer = new FileWriter(bunch);
         BufferedWriter w = new BufferedWriter(writer);
         
@@ -530,4 +533,58 @@ public class Merger {
         }
         w.close();
     }
+
+    private void printGraph(Vector<GraphNode> nodes, Vector<GraphDep> deps) throws IOException {
+        File graph = new File("output/mergedgraph.dot");
+        FileWriter writer = new FileWriter(graph);
+        BufferedWriter w = new BufferedWriter(writer);
+        String sim = "",var = "";
+        
+        w.write("digraph G {\n" + "size= \"" + nodes.size() + "," + nodes.size() + "\";\n" + "rotate = 180;\n");
+        
+        for(int i = 0; i < nodes.size()-1; i++)
+        {
+            if(nodes.get(i).getProducts().size() == folderdep.size())
+            {
+                w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse,color=blue,fontcolor=black,style=\"\"];\n");
+                sim += "\""+nodes.get(i).getNodename() + "\"" + "\n";
+            }else
+            {
+                w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse,color=red,fontcolor=black,style=\"\"];\n");
+                var += "\""+nodes.get(i).getNodename() + "\"" + "\n";
+            }
+        }
+        
+        for(int j = 0; j<deps.size()-1;j++)
+        {
+            if(deps.get(j).getProducts().size() == folderdep.size())
+            {
+                w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends()+ "\" " + "[color=blue,font=6];\n");
+            }else
+            {
+              w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends()+ "\" " + "[color=red,font=6];\n");  
+            }
+        }
+        w.write("subgraph cluster_0{\nlabel = \"Variability\";\n");
+        w.write(var);
+        w.write("}\n");
+        
+        w.write("subgraph cluster_1{\nlabel = \"Similarities\" ;\n");
+        w.write(sim);
+        w.write("}\n");
+        w.write("}");
+        w.close();
+       }
+
+    private void printACDC(Vector<GraphDep> deps) throws IOException {
+        File acdc = new File("output/acdcinput.rsf");
+        FileWriter writer = new FileWriter(acdc);
+        BufferedWriter w = new BufferedWriter(writer);
+        
+        for(int i = 0;i<deps.size()-1;i++)
+        {
+            w.write("depends "+deps.get(i).getDependency()+"\n");
+        }
+        w.close();
+        }
 }

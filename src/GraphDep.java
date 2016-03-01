@@ -13,6 +13,8 @@ import java.util.ArrayList;
  */
 public class GraphDep {
     private String dependency;
+    private String node;
+    private String depends;
     private boolean variability;
     private ArrayList<String> products;
     
@@ -45,6 +47,22 @@ public class GraphDep {
 
     public void setProducts(String products) {
         this.products.add(products);
+    }
+
+    public String getNode() {
+        return node;
+    }
+
+    public void setNode(String node) {
+        this.node = node;
+    }
+
+    public String getDepends() {
+        return depends;
+    }
+
+    public void setDepends(String depends) {
+        this.depends = depends;
     }
     
     

@@ -1,0 +1,93 @@
+/* ------------------------------------------------------------ */
+/* created with bunch v3 */
+/* Objective Function value = 1.6774193548387097*/
+/* ------------------------------------------------------------ */
+
+digraph G {
+size= "10,10";
+rotate = 90;
+subgraph cluster0 {
+label = "(SS-L1):Node";
+color = black;
+style = bold;
+
+"Node"[label="Node",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"NodeWriter"[label="NodeWriter",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Literal"[label="Literal",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Equals"[label="Equals",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Choose"[label="Choose",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Or"[label="Or",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"SatSolver"[label="SatSolver",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"NodeReader"[label="NodeReader",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Implies"[label="Implies",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+}
+subgraph cluster1 {
+label = "(SS-L1):Not";
+color = black;
+style = bold;
+
+"AtMost"[label="AtMost",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Not"[label="Not",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+}
+subgraph cluster2 {
+label = "(SS-L1):And";
+color = black;
+style = bold;
+
+"And"[label="And",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"AtLeast"[label="AtLeast",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+}
+"Choose" -> "And" [color=blue,font=6];
+"Choose" -> "Node" [color=blue,font=6];
+"Choose" -> "AtMost" [color=blue,font=6];
+"Equals" -> "Not" [color=blue,font=6];
+"Equals" -> "And" [color=blue,font=6];
+"Equals" -> "Node" [color=blue,font=6];
+"Equals" -> "Or" [color=blue,font=6];
+"Literal" -> "Node" [color=blue,font=6];
+"Not" -> "Literal" [color=blue,font=6];
+"Not" -> "And" [color=blue,font=6];
+"Not" -> "AtMost" [color=blue,font=6];
+"Not" -> "AtLeast" [color=blue,font=6];
+"Not" -> "Node" [color=blue,font=6];
+"Not" -> "Or" [color=blue,font=6];
+"NodeWriter" -> "Choose" [color=blue,font=6];
+"NodeWriter" -> "Equals" [color=blue,font=6];
+"NodeWriter" -> "Literal" [color=blue,font=6];
+"NodeWriter" -> "Not" [color=blue,font=6];
+"NodeWriter" -> "And" [color=blue,font=6];
+"NodeWriter" -> "Or" [color=blue,font=6];
+"NodeWriter" -> "Node" [color=blue,font=6];
+"NodeWriter" -> "AtMost" [color=blue,font=6];
+"NodeWriter" -> "Implies" [color=blue,font=6];
+"SatSolver" -> "Literal" [color=blue,font=6];
+"SatSolver" -> "And" [color=blue,font=6];
+"SatSolver" -> "Node" [color=blue,font=6];
+"SatSolver" -> "Or" [color=blue,font=6];
+"And" -> "Node" [color=blue,font=6];
+"Or" -> "And" [color=blue,font=6];
+"Or" -> "Node" [color=blue,font=6];
+"NodeReader" -> "Literal" [color=blue,font=6];
+"NodeReader" -> "Not" [color=blue,font=6];
+"NodeReader" -> "And" [color=blue,font=6];
+"NodeReader" -> "Equals" [color=blue,font=6];
+"NodeReader" -> "Node" [color=blue,font=6];
+"NodeReader" -> "Implies" [color=blue,font=6];
+"NodeReader" -> "Or" [color=blue,font=6];
+"Node" -> "Choose" [color=blue,font=6];
+"Node" -> "Equals" [color=blue,font=6];
+"Node" -> "Literal" [color=blue,font=6];
+"Node" -> "Not" [color=blue,font=6];
+"Node" -> "NodeWriter" [color=blue,font=6];
+"Node" -> "And" [color=blue,font=6];
+"Node" -> "Or" [color=blue,font=6];
+"Node" -> "AtMost" [color=blue,font=6];
+"Node" -> "Implies" [color=blue,font=6];
+"AtMost" -> "And" [color=blue,font=6];
+"AtMost" -> "Node" [color=blue,font=6];
+"Implies" -> "Not" [color=blue,font=6];
+"Implies" -> "Node" [color=blue,font=6];
+"Implies" -> "Or" [color=blue,font=6];
+"AtLeast" -> "And" [color=blue,font=6];
+"AtLeast" -> "Node" [color=blue,font=6];
+}

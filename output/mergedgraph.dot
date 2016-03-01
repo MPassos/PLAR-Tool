@@ -1,0 +1,89 @@
+digraph G {
+size= "14,14";
+rotate = 180;
+"And"[label="And",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Equals"[label="Equals",shape=ellipse,color=red,fontcolor=black,style=""];
+"Implies"[label="Implies",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Literal"[label="Literal",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Node"[label="Node",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Not"[label="Not",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Or"[label="Or",shape=ellipse,color=blue,fontcolor=black,style=""];
+"SatSolver"[label="SatSolver",shape=ellipse,color=red,fontcolor=black,style=""];
+"AtLeast"[label="AtLeast",shape=ellipse,color=red,fontcolor=black,style=""];
+"AtMost"[label="AtMost",shape=ellipse,color=red,fontcolor=black,style=""];
+"NodeReader"[label="NodeReader",shape=ellipse,color=red,fontcolor=black,style=""];
+"NodeWriter"[label="NodeWriter",shape=ellipse,color=red,fontcolor=black,style=""];
+"Choose"[label="Choose",shape=ellipse,color=red,fontcolor=black,style=""];
+"And" -> "Node" [color=blue,font=6];
+"Equals" -> "And" [color=red,font=6];
+"Equals" -> "Node" [color=red,font=6];
+"Equals" -> "Not" [color=red,font=6];
+"Equals" -> "Or" [color=red,font=6];
+"Implies" -> "Node" [color=blue,font=6];
+"Implies" -> "Not" [color=blue,font=6];
+"Implies" -> "Or" [color=blue,font=6];
+"Literal" -> "Node" [color=blue,font=6];
+"Node" -> "And" [color=blue,font=6];
+"Node" -> "Literal" [color=blue,font=6];
+"Node" -> "Not" [color=blue,font=6];
+"Node" -> "Or" [color=blue,font=6];
+"Not" -> "Node" [color=blue,font=6];
+"Or" -> "And" [color=blue,font=6];
+"Or" -> "Node" [color=blue,font=6];
+"SatSolver" -> "And" [color=red,font=6];
+"SatSolver" -> "Literal" [color=red,font=6];
+"SatSolver" -> "Node" [color=red,font=6];
+"SatSolver" -> "Or" [color=red,font=6];
+"AtLeast" -> "And" [color=red,font=6];
+"AtLeast" -> "Node" [color=red,font=6];
+"AtMost" -> "And" [color=red,font=6];
+"AtMost" -> "Node" [color=red,font=6];
+"Not" -> "And" [color=red,font=6];
+"Not" -> "AtLeast" [color=red,font=6];
+"Not" -> "AtMost" [color=red,font=6];
+"Not" -> "Literal" [color=red,font=6];
+"Not" -> "Or" [color=red,font=6];
+"Node" -> "Implies" [color=red,font=6];
+"Node" -> "NodeWriter" [color=red,font=6];
+"NodeReader" -> "And" [color=red,font=6];
+"NodeReader" -> "Implies" [color=red,font=6];
+"NodeReader" -> "Literal" [color=red,font=6];
+"NodeReader" -> "Node" [color=red,font=6];
+"NodeReader" -> "Not" [color=red,font=6];
+"NodeReader" -> "Or" [color=red,font=6];
+"NodeWriter" -> "And" [color=red,font=6];
+"NodeWriter" -> "Implies" [color=red,font=6];
+"NodeWriter" -> "Literal" [color=red,font=6];
+"NodeWriter" -> "Node" [color=red,font=6];
+"NodeWriter" -> "Not" [color=red,font=6];
+"NodeWriter" -> "Or" [color=red,font=6];
+"Choose" -> "And" [color=red,font=6];
+"Choose" -> "AtMost" [color=red,font=6];
+"Choose" -> "Node" [color=red,font=6];
+"Node" -> "AtMost" [color=red,font=6];
+"Node" -> "Choose" [color=red,font=6];
+"Node" -> "Equals" [color=red,font=6];
+"NodeReader" -> "Equals" [color=red,font=6];
+"NodeWriter" -> "AtMost" [color=red,font=6];
+"NodeWriter" -> "Choose" [color=red,font=6];
+"NodeWriter" -> "Equals" [color=red,font=6];
+subgraph cluster_0{
+label = "Variability";
+"Equals"
+"SatSolver"
+"AtLeast"
+"AtMost"
+"NodeReader"
+"NodeWriter"
+"Choose"
+}
+subgraph cluster_1{
+label = "Similarities" ;
+"And"
+"Implies"
+"Literal"
+"Node"
+"Not"
+"Or"
+}
+}
