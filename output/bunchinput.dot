@@ -1,93 +1,87 @@
 /* ------------------------------------------------------------ */
 /* created with bunch v3 */
-/* Objective Function value = 1.6774193548387097*/
+/* Objective Function value = 1.3333333333333335*/
 /* ------------------------------------------------------------ */
 
 digraph G {
 size= "10,10";
 rotate = 90;
 subgraph cluster0 {
-label = "(SS-L1):Node";
+label = "(SS-L0):Graph";
 color = black;
 style = bold;
 
-"Node"[label="Node",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"NodeWriter"[label="NodeWriter",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"Literal"[label="Literal",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"Equals"[label="Equals",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"Choose"[label="Choose",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"Or"[label="Or",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"SatSolver"[label="SatSolver",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"NodeReader"[label="NodeReader",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"Implies"[label="Implies",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Graph"[label="Graph",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"FinishTimeWorkSpace"[label="FinishTimeWorkSpace",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"CycleWorkSpace"[label="CycleWorkSpace",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"WorkSpace"[label="WorkSpace",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"NumberWorkSpace"[label="NumberWorkSpace",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"WorkSpaceTranspose"[label="WorkSpaceTranspose",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
 }
 subgraph cluster1 {
-label = "(SS-L1):Not";
+label = "(SS-L0):Neighbor";
 color = black;
 style = bold;
 
-"AtMost"[label="AtMost",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"Not"[label="Not",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Neighbor"[label="Neighbor",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Edge"[label="Edge",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"NeighborIfc"[label="NeighborIfc",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
 }
 subgraph cluster2 {
-label = "(SS-L1):And";
+label = "(SS-L0):Vertex";
 color = black;
 style = bold;
 
-"And"[label="And",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
-"AtLeast"[label="AtLeast",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Vertex"[label="Vertex",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"Main"[label="Main",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"GlobalVarsWrapper"[label="GlobalVarsWrapper",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"VertexIter"[label="VertexIter",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
 }
-"Choose" -> "And" [color=blue,font=6];
-"Choose" -> "Node" [color=blue,font=6];
-"Choose" -> "AtMost" [color=blue,font=6];
-"Equals" -> "Not" [color=blue,font=6];
-"Equals" -> "And" [color=blue,font=6];
-"Equals" -> "Node" [color=blue,font=6];
-"Equals" -> "Or" [color=blue,font=6];
-"Literal" -> "Node" [color=blue,font=6];
-"Not" -> "Literal" [color=blue,font=6];
-"Not" -> "And" [color=blue,font=6];
-"Not" -> "AtMost" [color=blue,font=6];
-"Not" -> "AtLeast" [color=blue,font=6];
-"Not" -> "Node" [color=blue,font=6];
-"Not" -> "Or" [color=blue,font=6];
-"NodeWriter" -> "Choose" [color=blue,font=6];
-"NodeWriter" -> "Equals" [color=blue,font=6];
-"NodeWriter" -> "Literal" [color=blue,font=6];
-"NodeWriter" -> "Not" [color=blue,font=6];
-"NodeWriter" -> "And" [color=blue,font=6];
-"NodeWriter" -> "Or" [color=blue,font=6];
-"NodeWriter" -> "Node" [color=blue,font=6];
-"NodeWriter" -> "AtMost" [color=blue,font=6];
-"NodeWriter" -> "Implies" [color=blue,font=6];
-"SatSolver" -> "Literal" [color=blue,font=6];
-"SatSolver" -> "And" [color=blue,font=6];
-"SatSolver" -> "Node" [color=blue,font=6];
-"SatSolver" -> "Or" [color=blue,font=6];
-"And" -> "Node" [color=blue,font=6];
-"Or" -> "And" [color=blue,font=6];
-"Or" -> "Node" [color=blue,font=6];
-"NodeReader" -> "Literal" [color=blue,font=6];
-"NodeReader" -> "Not" [color=blue,font=6];
-"NodeReader" -> "And" [color=blue,font=6];
-"NodeReader" -> "Equals" [color=blue,font=6];
-"NodeReader" -> "Node" [color=blue,font=6];
-"NodeReader" -> "Implies" [color=blue,font=6];
-"NodeReader" -> "Or" [color=blue,font=6];
-"Node" -> "Choose" [color=blue,font=6];
-"Node" -> "Equals" [color=blue,font=6];
-"Node" -> "Literal" [color=blue,font=6];
-"Node" -> "Not" [color=blue,font=6];
-"Node" -> "NodeWriter" [color=blue,font=6];
-"Node" -> "And" [color=blue,font=6];
-"Node" -> "Or" [color=blue,font=6];
-"Node" -> "AtMost" [color=blue,font=6];
-"Node" -> "Implies" [color=blue,font=6];
-"AtMost" -> "And" [color=blue,font=6];
-"AtMost" -> "Node" [color=blue,font=6];
-"Implies" -> "Not" [color=blue,font=6];
-"Implies" -> "Node" [color=blue,font=6];
-"Implies" -> "Or" [color=blue,font=6];
-"AtLeast" -> "And" [color=blue,font=6];
-"AtLeast" -> "Node" [color=blue,font=6];
+subgraph cluster3 {
+label = "(SS-L0):EdgeIfc";
+color = black;
+style = bold;
+
+"EdgeIter"[label="EdgeIter",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+"EdgeIfc"[label="EdgeIfc",shape=ellipse,color=lightblue,fontcolor=black,style=filled];
+}
+"WorkSpaceTranspose" -> "Vertex" [color=blue,font=6];
+"WorkSpaceTranspose" -> "WorkSpace" [color=blue,font=6];
+"WorkSpace" -> "Vertex" [color=blue,font=6];
+"Edge" -> "EdgeIfc" [color=blue,font=6];
+"Edge" -> "Vertex" [color=blue,font=6];
+"Edge" -> "Neighbor" [color=blue,font=6];
+"FinishTimeWorkSpace" -> "Vertex" [color=blue,font=6];
+"FinishTimeWorkSpace" -> "WorkSpace" [color=blue,font=6];
+"Neighbor" -> "EdgeIfc" [color=blue,font=6];
+"Neighbor" -> "Edge" [color=blue,font=6];
+"Neighbor" -> "NeighborIfc" [color=blue,font=6];
+"Neighbor" -> "Vertex" [color=blue,font=6];
+"Main" -> "VertexIter" [color=blue,font=6];
+"Main" -> "Graph" [color=blue,font=6];
+"Main" -> "Vertex" [color=blue,font=6];
+"Graph" -> "WorkSpaceTranspose" [color=blue,font=6];
+"Graph" -> "WorkSpace" [color=blue,font=6];
+"Graph" -> "Edge" [color=blue,font=6];
+"Graph" -> "FinishTimeWorkSpace" [color=blue,font=6];
+"Graph" -> "Neighbor" [color=blue,font=6];
+"Graph" -> "EdgeIter" [color=blue,font=6];
+"Graph" -> "NumberWorkSpace" [color=blue,font=6];
+"Graph" -> "Vertex" [color=blue,font=6];
+"Graph" -> "EdgeIfc" [color=blue,font=6];
+"Graph" -> "CycleWorkSpace" [color=blue,font=6];
+"Graph" -> "VertexIter" [color=blue,font=6];
+"EdgeIter" -> "EdgeIfc" [color=blue,font=6];
+"Vertex" -> "EdgeIter" [color=blue,font=6];
+"Vertex" -> "VertexIter" [color=blue,font=6];
+"Vertex" -> "EdgeIfc" [color=blue,font=6];
+"Vertex" -> "GlobalVarsWrapper" [color=blue,font=6];
+"Vertex" -> "WorkSpace" [color=blue,font=6];
+"Vertex" -> "Neighbor" [color=blue,font=6];
+"NumberWorkSpace" -> "Vertex" [color=blue,font=6];
+"NumberWorkSpace" -> "WorkSpace" [color=blue,font=6];
+"EdgeIfc" -> "Vertex" [color=blue,font=6];
+"CycleWorkSpace" -> "Vertex" [color=blue,font=6];
+"CycleWorkSpace" -> "WorkSpace" [color=blue,font=6];
+"VertexIter" -> "Vertex" [color=blue,font=6];
 }

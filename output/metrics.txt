@@ -1,0 +1,81 @@
+METRICS REPORT:
+COMPONENT METRICS
+SSC:0.78571427
+SVC:0.21428572
+COMMON COMPONENTS TOTAL:11
+VARIABILITY COMPONENTS TOTAL:3
+RELATION METRICS
+RSSC:0.7407407
+RSVC:0.25925925
+COMMON RELATIONS TOTAL:40
+VARIABILITY RELATIONS TOTAL:14
+
+CRR FOR EACH COMPONENT
+And CCR:100.0
+Equals CCR:60.000004
+Implies CCR:100.0
+Literal CCR:100.0
+Node CCR:100.0
+Not CCR:100.0
+Or CCR:100.0
+SatSolver CCR:80.0
+AtLeast CCR:20.0
+AtMost CCR:40.0
+NodeReader CCR:40.0
+NodeWriter CCR:40.0
+Choose CCR:20.0
+
+CRR FOR EACH RELATION
+And Node CCR:100.0
+Equals And CCR:60.000004
+Equals Node CCR:60.000004
+Equals Not CCR:60.000004
+Equals Or CCR:60.000004
+Implies Node CCR:100.0
+Implies Not CCR:100.0
+Implies Or CCR:100.0
+Literal Node CCR:100.0
+Node And CCR:100.0
+Node Literal CCR:100.0
+Node Not CCR:100.0
+Node Or CCR:100.0
+Not Node CCR:100.0
+Or And CCR:100.0
+Or Node CCR:100.0
+SatSolver And CCR:80.0
+SatSolver Literal CCR:80.0
+SatSolver Node CCR:80.0
+SatSolver Or CCR:80.0
+AtLeast And CCR:20.0
+AtLeast Node CCR:20.0
+AtMost And CCR:40.0
+AtMost Node CCR:40.0
+Not And CCR:60.000004
+Not AtLeast CCR:20.0
+Not AtMost CCR:40.0
+Not Literal CCR:60.000004
+Not Or CCR:60.000004
+Node Implies CCR:40.0
+Node NodeWriter CCR:40.0
+NodeReader And CCR:40.0
+NodeReader Implies CCR:40.0
+NodeReader Literal CCR:40.0
+NodeReader Node CCR:40.0
+NodeReader Not CCR:40.0
+NodeReader Or CCR:40.0
+NodeWriter And CCR:40.0
+NodeWriter Implies CCR:40.0
+NodeWriter Literal CCR:40.0
+NodeWriter Node CCR:40.0
+NodeWriter Not CCR:40.0
+NodeWriter Or CCR:40.0
+Choose And CCR:20.0
+Choose AtMost CCR:20.0
+Choose Node CCR:20.0
+Node AtMost CCR:20.0
+Node Choose CCR:20.0
+Node Equals CCR:20.0
+NodeReader Equals CCR:20.0
+NodeWriter AtMost CCR:20.0
+NodeWriter Choose CCR:20.0
+NodeWriter Equals CCR:20.0

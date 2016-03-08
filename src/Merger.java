@@ -470,7 +470,8 @@ public class Merger {
         printReport(nodes, deps);
         printBUNCH(deps);
         printACDC(deps);
-        printGraph(nodes,deps);
+        printGraph(nodes, deps);
+        metrics(nodes, deps);
     }
 
     public void printAll() {
@@ -497,24 +498,21 @@ public class Merger {
         BufferedWriter w = new BufferedWriter(writer);
 
         w.write("Nodes:\n");
-        for (int i = 0; i < node.size()-1; i++) {
-          String aux = "";
-          aux += node.get(i).getNodename()+" ";
-          for(int j = 0; j<node.get(i).getProducts().size();j++)
-          {
-              aux += node.get(i).getProducts().get(j)+" ";
-          }
-          aux += "\n";
-          w.write(aux);
+        for (int i = 0; i < node.size() - 1; i++) {
+            String aux = "";
+            aux += node.get(i).getNodename() + " ";
+            for (int j = 0; j < node.get(i).getProducts().size(); j++) {
+                aux += node.get(i).getProducts().get(j) + " ";
+            }
+            aux += "\n";
+            w.write(aux);
         }
         w.write("\nDependencies:\n");
-        for(int a = 0; a < dep.size()-1;a++)
-        {
+        for (int a = 0; a < dep.size() - 1; a++) {
             String aux = "";
-            aux += dep.get(a).getDependency()+" ";
-            for(int b = 0; b< dep.get(a).getProducts().size();b++)
-            {
-                aux += dep.get(a).getProducts().get(b) +" ";
+            aux += dep.get(a).getDependency() + " ";
+            for (int b = 0; b < dep.get(a).getProducts().size(); b++) {
+                aux += dep.get(a).getProducts().get(b) + " ";
             }
             aux += "\n";
             w.write(aux);
@@ -526,10 +524,9 @@ public class Merger {
         File bunch = new File("output/bunchinput");
         FileWriter writer = new FileWriter(bunch);
         BufferedWriter w = new BufferedWriter(writer);
-        
-        for(int i = 0;i<dep.size()-1;i++)
-        {
-            w.write(dep.get(i).getDependency()+"\n");
+
+        for (int i = 0; i < dep.size() - 1; i++) {
+            w.write(dep.get(i).getDependency() + "\n");
         }
         w.close();
     }
@@ -538,53 +535,104 @@ public class Merger {
         File graph = new File("output/mergedgraph.dot");
         FileWriter writer = new FileWriter(graph);
         BufferedWriter w = new BufferedWriter(writer);
-        String sim = "",var = "";
-        
+        String sim = "", var = "";
+
         w.write("digraph G {\n" + "size= \"" + nodes.size() + "," + nodes.size() + "\";\n" + "rotate = 180;\n");
-        
-        for(int i = 0; i < nodes.size()-1; i++)
-        {
-            if(nodes.get(i).getProducts().size() == folderdep.size())
-            {
+
+        for (int i = 0; i < nodes.size() - 1; i++) {
+            if (nodes.get(i).getProducts().size() == folderdep.size()) {
                 w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse,color=blue,fontcolor=black,style=\"\"];\n");
-                sim += "\""+nodes.get(i).getNodename() + "\"" + "\n";
-            }else
-            {
+                sim += "\"" + nodes.get(i).getNodename() + "\"" + "\n";
+            } else {
                 w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse,color=red,fontcolor=black,style=\"\"];\n");
-                var += "\""+nodes.get(i).getNodename() + "\"" + "\n";
+                var += "\"" + nodes.get(i).getNodename() + "\"" + "\n";
             }
         }
-        
-        for(int j = 0; j<deps.size()-1;j++)
-        {
-            if(deps.get(j).getProducts().size() == folderdep.size())
-            {
-                w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends()+ "\" " + "[color=blue,font=6];\n");
-            }else
-            {
-              w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends()+ "\" " + "[color=red,font=6];\n");  
+
+        for (int j = 0; j < deps.size() - 1; j++) {
+            if (deps.get(j).getProducts().size() == folderdep.size()) {
+                w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends() + "\" " + "[color=blue,font=6];\n");
+            } else {
+                w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends() + "\" " + "[color=red,font=6];\n");
             }
         }
         w.write("subgraph cluster_0{\nlabel = \"Variability\";\n");
         w.write(var);
         w.write("}\n");
-        
+
         w.write("subgraph cluster_1{\nlabel = \"Similarities\" ;\n");
         w.write(sim);
         w.write("}\n");
         w.write("}");
         w.close();
-       }
+    }
 
     private void printACDC(Vector<GraphDep> deps) throws IOException {
         File acdc = new File("output/acdcinput.rsf");
         FileWriter writer = new FileWriter(acdc);
         BufferedWriter w = new BufferedWriter(writer);
-        
-        for(int i = 0;i<deps.size()-1;i++)
-        {
-            w.write("depends "+deps.get(i).getDependency()+"\n");
+
+        for (int i = 0; i < deps.size() - 1; i++) {
+            w.write("depends " + deps.get(i).getDependency() + "\n");
         }
         w.close();
+    }
+
+    private void metrics(Vector<GraphNode> nodes, Vector<GraphDep> deps) throws IOException {
+        File metrics = new File("output/metrics.txt");
+        FileWriter writer = new FileWriter(metrics);
+        BufferedWriter w = new BufferedWriter(writer);
+        //Components Metrics
+        float Cc, Cv, SSC, SVC, CCR;
+        Cc = Cv = SSC = SVC = CCR = 0;
+
+        //Relation Metrics
+        float Rc, Rv, RSSC, RSVC, RCCR;
+        Rc = Rv = RSSC = RSVC = RCCR = 0;
+
+        for (int i = 0; i < nodes.size(); i++) {
+            if (nodes.get(i).isVariability() == true) {
+                Cv++;
+            } else {
+                Cc++;
+            }
         }
+        SSC = Cc / (Cc + Cv);
+        SVC = Cv / (Cc + Cv);
+
+        for (int a = 0; a < deps.size(); a++) {
+            if (deps.get(a).isVariability() == true) {
+                Rv++;
+            } else {
+                Rc++;
+            }
+        }
+        RSSC = Rc / (Rc + Rv);
+        RSVC = Rv / (Rc + Rv);
+
+        w.write("METRICS REPORT:\n");
+        w.write("COMPONENT METRICS\n");
+        w.write("SSC:" + SSC + "\n");
+        w.write("SVC:" + SVC + "\n");
+        w.write("COMMON COMPONENTS TOTAL:" + (int) Cc + "\n");
+        w.write("VARIABILITY COMPONENTS TOTAL:" + (int) Cv + "\n");
+        w.write("RELATION METRICS\n");
+        w.write("RSSC:" + RSSC + "\n");
+        w.write("RSVC:" + RSVC + "\n");
+        w.write("COMMON RELATIONS TOTAL:" + (int) Rc + "\n");
+        w.write("VARIABILITY RELATIONS TOTAL:" + (int) Rv + "\n");
+        w.write("\nCRR FOR EACH COMPONENT\n");
+        for (int j = 0; j < nodes.size() - 1; j++) {
+            CCR = ((float) nodes.get(j).getProducts().size() / (float) folderdep.size()) * 100;
+            w.write(nodes.get(j).getNodename() + " CCR:" + CCR + "\n");
+
+        }
+        w.write("\nCRR FOR EACH RELATION\n");
+        for (int b = 0; b < deps.size() - 1; b++) {
+            RCCR = ((float) deps.get(b).getProducts().size() / (float) folderdep.size()) * 100;
+            w.write(deps.get(b).getDependency() + " CCR:" + RCCR + "\n");
+        }
+
+        w.close();
+    }
 }
