@@ -472,6 +472,7 @@ public class Merger {
         printACDC(deps);
         printGraph(nodes, deps);
         metrics(nodes, deps);
+        printUML(nodes,deps);
     }
 
     public void printAll() {
@@ -635,4 +636,38 @@ public class Merger {
 
         w.close();
     }
+
+    private void printUML(Vector<GraphNode> nodes, Vector<GraphDep> deps) throws IOException {
+        File graph = new File("output/umlclassdiagram.txt");
+        FileWriter writer = new FileWriter(graph);
+        BufferedWriter w = new BufferedWriter(writer);
+        String sim = "", var = "";
+
+        w.write("@startuml\nskinparam class{\nBackgroundColor<<Sim>> Blue\nArrowColor<<Sim>> Blue\nBackgroundColor<<Var>> Red\nArrowColor<<Var>> Red\n}");
+
+        for (int i = 0; i < nodes.size() - 1; i++) {
+            if (nodes.get(i).getProducts().size() == folderdep.size()) {
+                sim += "class " + nodes.get(i).getNodename() + " <<Sim>>" + "\n";
+            } else {
+                var += "class " + nodes.get(i).getNodename() + " <<Var>>" + "\n";
+            }
+        }
+        
+        w.write("\npackage Variability <<Rect>>{\n");
+        w.write(var);
+        w.write("}\n");
+        
+         w.write("package Similarities <<Rect>>{\n");
+        w.write(sim);
+        w.write("}\n");
+        
+        for (int j = 0; j < deps.size() - 1; j++) {
+            
+                w.write(deps.get(j).getNode() + " --> " + deps.get(j).getDepends() + "\n");   
+        }
+        
+        w.write("@enduml");
+        w.close();
+    }
 }
+
