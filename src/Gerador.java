@@ -74,7 +74,7 @@ public class Gerador {
                  * When the character read is a \n
                  * A new node is added to the Vector
                  */
-                if (c == 13) {
+                if (c == 10) {
                     no.add(nomedono);
                     nomedono = "";
                     continue;
@@ -82,7 +82,7 @@ public class Gerador {
                 /**
                  * Ignores carriage returns
                  */
-                if (c == 10) {
+                if (c == 13) {
                     continue;
                 }
                 ch = (char) c;
@@ -104,14 +104,14 @@ public class Gerador {
                     continue;
                 }
 
-                if (c == 13) {
+                if (c == 10) {
                     dependencias.add(node);
                     node = new Node("", "");
                     nomedono = "";
                     continue;
                 }
 
-                if (c == 10) {
+                if (c == 13) {
                     continue;
                 }
                 ch = (char) c;
