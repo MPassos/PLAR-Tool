@@ -430,8 +430,12 @@ public class Merger {
                         break;
                     }
                     if (nodes.get(k).getNodename().equals(naux.getNodename())) {
-                        nodes.get(k).setVariability(false);
+                        //nodes.get(k).setVariability(false);
                         nodes.get(k).setProducts("Product " + (i + 1));
+                        if(nodes.get(k).getProducts().size() == folderdep.size())
+                        {
+                          nodes.get(k).setVariability(false);  
+                        }
                         break;
                     }
 
@@ -460,8 +464,12 @@ public class Merger {
                         break;
                     }
                     if (deps.get(b).getDependency().equals(daux.getDependency())) {
-                        deps.get(b).setVariability(false);
+                        //deps.get(b).setVariability(false);
                         deps.get(b).setProducts("Product " + (i + 1));
+                        if(deps.get(b).getProducts().size() == folderdep.size())
+                        {
+                          deps.get(b).setVariability(false);  
+                        }
                         break;
                     }
                 }
