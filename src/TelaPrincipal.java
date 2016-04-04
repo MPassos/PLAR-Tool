@@ -61,7 +61,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Graph Generator");
+        setTitle("PLAR: Product Line Architecture Recovery Tool");
 
         jLabel1.setText("Choose Input File:");
 
