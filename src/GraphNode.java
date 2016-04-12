@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Mateus
  */
-public class GraphNode {
+public class GraphNode implements Comparable<GraphNode> {
     private String nodename;
     private boolean variability;
     private ArrayList<String> products;
@@ -47,7 +47,9 @@ public class GraphNode {
     public void setProducts(String products) {
         this.products.add(products);
     }
-    
-    
-    
+
+    @Override
+    public int compareTo(GraphNode c) {
+        return nodename.compareTo(c.nodename);
+    }   
 }

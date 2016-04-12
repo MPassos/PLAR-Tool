@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Mateus
  */
-public class GraphDep {
+public class GraphDep implements Comparable<GraphDep> {
     private String dependency;
     private String node;
     private String depends;
@@ -63,6 +63,11 @@ public class GraphDep {
 
     public void setDepends(String depends) {
         this.depends = depends;
+    }
+
+    @Override
+    public int compareTo(GraphDep c) {
+        return node.compareTo(c.node);
     }
     
     

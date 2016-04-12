@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.util.Collections;
 import java.util.Vector;
 
 /**
@@ -50,6 +51,7 @@ public class Merger {
         dependencias2 = new Vector(10, 1);
         int c1 = -1;
         int c2 = -1;
+        int counter = 0;
         char ch;
         Node node = new Node("", "");
         String nome1, nome2;
@@ -65,7 +67,7 @@ public class Merger {
                 /**
                  * Ignore numbers and space
                  */
-                if ((c1 >= 48 && c1 <= 57) || c1 == 32) {
+                if (((c1 >= 48 && c1 <= 57) && counter <= 2) || c1 == 32) {
                     continue;
                 }
 
@@ -83,9 +85,10 @@ public class Merger {
                 if (c1 == 10) {
                     no1.add(nome1);
                     nome1 = "";
+                    counter = 0;
                     continue;
                 }
-
+                counter++;
                 ch = (char) c1;
                 nome1 += Character.toString(ch);
             }
@@ -120,7 +123,7 @@ public class Merger {
                 nome1 += Character.toString(ch);
             }
         }
-
+        counter = 0;
         while (lbuffer2.ready()) {
             while (c2 != 35) {
                 /**
@@ -131,7 +134,7 @@ public class Merger {
                 /**
                  * Ignore numbers and space
                  */
-                if ((c2 >= 48 && c2 <= 57) || c2 == 32) {
+                if (((c2 >= 48 && c2 <= 57) && counter <= 2) || c2 == 32) {
                     continue;
                 }
 
@@ -149,9 +152,10 @@ public class Merger {
                 if (c2 == 10) {
                     no2.add(nome2);
                     nome2 = "";
+                    counter = 0;
                     continue;
                 }
-
+                counter++;
                 ch = (char) c2;
                 nome2 += Character.toString(ch);
             }
@@ -322,7 +326,8 @@ public class Merger {
             NodeCompare aux = new NodeCompare();
             no = aux.getNodename();
             dep = aux.getDep();
-
+            int counter = 0;
+            
             while (lbuffer1.ready()) {
 
                 while (c1 != 35) {
@@ -334,7 +339,7 @@ public class Merger {
                     /**
                      * Ignore numbers and space
                      */
-                    if ((c1 >= 48 && c1 <= 57) || c1 == 32) {
+                    if (((c1 >= 48 && c1 <= 57) && counter <= 2) || c1 == 32) {
                         continue;
                     }
 
@@ -342,6 +347,7 @@ public class Merger {
                      * Ignores carriage \n
                      */
                     if (c1 == 13) {
+                        
                         continue;
                     }
 
@@ -351,14 +357,14 @@ public class Merger {
                      */
                     if (c1 == 10) {
                         no.add(nome1);
-
+                        counter = 0;
                         nome1 = "";
                         continue;
                     }
 
                     ch = (char) c1;
                     nome1 += Character.toString(ch);
-
+                    counter++;
                     //To get rid of strange characters
                     if (nome1.charAt(0) > 256) {
                         char caux = nome1.charAt(1);
@@ -475,6 +481,10 @@ public class Merger {
                 }
             }
         }
+        nodes.remove(nodes.size()-1);
+        deps.remove(deps.size()-1);
+        Collections.sort(nodes);
+        Collections.sort(deps);
         printReport(nodes, deps);
         printBUNCH(deps);
         printACDC(deps);
@@ -507,7 +517,7 @@ public class Merger {
         BufferedWriter w = new BufferedWriter(writer);
 
         w.write("Nodes:\n");
-        for (int i = 0; i < node.size() - 1; i++) {
+        for (int i = 0; i < node.size(); i++) {
             String aux = "";
             aux += node.get(i).getNodename() + " ";
             for (int j = 0; j < node.get(i).getProducts().size(); j++) {
@@ -517,7 +527,7 @@ public class Merger {
             w.write(aux);
         }
         w.write("\nDependencies:\n");
-        for (int a = 0; a < dep.size() - 1; a++) {
+        for (int a = 0; a < dep.size(); a++) {
             String aux = "";
             aux += dep.get(a).getDependency() + " ";
             for (int b = 0; b < dep.get(a).getProducts().size(); b++) {
@@ -534,7 +544,7 @@ public class Merger {
         FileWriter writer = new FileWriter(bunch);
         BufferedWriter w = new BufferedWriter(writer);
 
-        for (int i = 0; i < dep.size() - 1; i++) {
+        for (int i = 0; i < dep.size(); i++) {
             w.write(dep.get(i).getDependency() + "\n");
         }
         w.close();
@@ -548,7 +558,7 @@ public class Merger {
 
         w.write("digraph G {\n" + "size= \"" + nodes.size() + "," + nodes.size() + "\";\n" + "rotate = 180;\n");
 
-        for (int i = 0; i < nodes.size() - 1; i++) {
+        for (int i = 0; i < nodes.size(); i++) {
             if (nodes.get(i).getProducts().size() == folderdep.size()) {
                 w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse,color=blue,fontcolor=black,style=\"\"];\n");
                 sim += "\"" + nodes.get(i).getNodename() + "\"" + "\n";
@@ -558,7 +568,7 @@ public class Merger {
             }
         }
 
-        for (int j = 0; j < deps.size() - 1; j++) {
+        for (int j = 0; j < deps.size(); j++) {
             if (deps.get(j).getProducts().size() == folderdep.size()) {
                 w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends() + "\" " + "[color=blue,font=6];\n");
             } else {
@@ -581,7 +591,7 @@ public class Merger {
         FileWriter writer = new FileWriter(acdc);
         BufferedWriter w = new BufferedWriter(writer);
 
-        for (int i = 0; i < deps.size() - 1; i++) {
+        for (int i = 0; i < deps.size(); i++) {
             w.write("depends " + deps.get(i).getDependency() + "\n");
         }
         w.close();
@@ -653,7 +663,7 @@ public class Merger {
 
         w.write("@startuml\nskinparam class{\nBackgroundColor<<Sim>> Blue\nArrowColor<<Sim>> Blue\nBackgroundColor<<Var>> Red\nArrowColor<<Var>> Red\n}");
 
-        for (int i = 0; i < nodes.size() - 1; i++) {
+        for (int i = 0; i < nodes.size(); i++) {
             if (nodes.get(i).getProducts().size() == folderdep.size()) {
                 sim += "class " + nodes.get(i).getNodename() + " <<Sim>>" + "\n";
             } else {
@@ -669,7 +679,7 @@ public class Merger {
         w.write(sim);
         w.write("}\n");
         
-        for (int j = 0; j < deps.size() - 1; j++) {
+        for (int j = 0; j < deps.size(); j++) {
             
                 w.write(deps.get(j).getNode() + " --> " + deps.get(j).getDepends() + "\n");   
         }
