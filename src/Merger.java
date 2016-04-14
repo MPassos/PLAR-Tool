@@ -491,6 +491,7 @@ public class Merger {
         printGraph(nodes, deps);
         metrics(nodes, deps);
         printUML(nodes,deps);
+        printMatrix(nodes,deps);
     }
 
     public void printAll() {
@@ -687,5 +688,52 @@ public class Merger {
         w.write("@enduml");
         w.close();
     }
+
+    private void printMatrix(Vector<GraphNode> nodes, Vector<GraphDep> deps) throws IOException {
+        File matrix = new File("output/matrix.html");
+        FileWriter writer = new FileWriter(matrix);
+        BufferedWriter w = new BufferedWriter(writer);
+        
+        w.write("<!DOCTYPE html>\n<html>\n<head>\n<style>\ntable, td, th {\n\tborder: 2px solid black;\n}\n"
+                + "</style>\n</head>\n<body>\n");
+        w.write("<h2 style=\"text-align: center\">Adjacency matrix</h2>\n");
+        w.write("<table style=\"border-collapse: collapse;\">\n");
+        w.write("\t<tr>\n");
+        w.write("\t\t<td></td>\n");
+        for(int i = 0; i<nodes.size();i++){
+              if(nodes.get(i).isVariability()) w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n");
+              else w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(0,0,255,1), rgba(0,0,255,0));font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n"); 
+        }
+        w.write("\t</tr>\n");
+        for(int a = 0;a<nodes.size(); a++){
+            w.write("\t<tr>\n");
+            if(nodes.get(a).isVariability()) w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));font-weight: bold;\">"+nodes.get(a).getNodename()+"</td>\n");
+            else w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(0,0,255,1), rgba(0,0,255,0));font-weight: bold;\">"+nodes.get(a).getNodename()+"</td>\n"); 
+            for(int b = 0;b<nodes.size();b++)
+            {
+                boolean found = false;
+                for(int c = 0; c<deps.size();c++)
+                {
+                    if(nodes.get(a).getNodename().equals(deps.get(c).getNode())&& 
+                            nodes.get(b).getNodename().equals(deps.get(c).getDepends()))
+                    {
+                        found = true;
+                       if(deps.get(c).isVariability()){
+                           w.write("\t\t<td style=\"background: red\"></td>\n");
+                           break;
+                       } else{
+                           w.write("\t\t<td style=\"background: blue\"></td>\n");
+                           break;
+                       }
+                    }
+                }
+                if(found == false) w.write("\t\t<td></td>\n");       
+            }
+            w.write("\t</tr>\n");
+        }           
+        w.write("</table>\n</body>\n</html>");
+        
+        w.close();
+        }
 }
 
