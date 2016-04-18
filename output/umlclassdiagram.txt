@@ -1,0 +1,66 @@
+@startuml
+skinparam class{
+BackgroundColor<<Sim>> Blue
+ArrowColor<<Sim>> Blue
+BackgroundColor<<Var>> Red
+ArrowColor<<Var>> Red
+}
+package Variability <<Rect>>{
+class CycleWorkSpace <<Var>>
+class Edge <<Var>>
+class FinishTimeWorkSpace <<Var>>
+class GlobalVarsWrapper <<Var>>
+class NumberWorkSpace <<Var>>
+class WorkSpaceTranspose <<Var>>
+}
+package Similarities <<Rect>>{
+class EdgeIfc <<Sim>>
+class EdgeIter <<Sim>>
+class Graph <<Sim>>
+class Main <<Sim>>
+class Neighbor <<Sim>>
+class NeighborIfc <<Sim>>
+class Vertex <<Sim>>
+class VertexIter <<Sim>>
+class WorkSpace <<Sim>>
+}
+CycleWorkSpace --> Vertex
+CycleWorkSpace --> WorkSpace
+Edge --> EdgeIfc
+Edge --> Neighbor
+Edge --> Vertex
+EdgeIfc --> Vertex
+EdgeIter --> EdgeIfc
+FinishTimeWorkSpace --> Vertex
+FinishTimeWorkSpace --> WorkSpace
+Graph --> Edge
+Graph --> EdgeIfc
+Graph --> EdgeIter
+Graph --> Neighbor
+Graph --> NumberWorkSpace
+Graph --> Vertex
+Graph --> VertexIter
+Graph --> WorkSpace
+Graph --> FinishTimeWorkSpace
+Graph --> WorkSpaceTranspose
+Graph --> CycleWorkSpace
+Main --> Graph
+Main --> Vertex
+Main --> VertexIter
+Neighbor --> Edge
+Neighbor --> Vertex
+Neighbor --> EdgeIfc
+Neighbor --> NeighborIfc
+NumberWorkSpace --> Vertex
+NumberWorkSpace --> WorkSpace
+Vertex --> EdgeIfc
+Vertex --> EdgeIter
+Vertex --> GlobalVarsWrapper
+Vertex --> Neighbor
+Vertex --> VertexIter
+Vertex --> WorkSpace
+VertexIter --> Vertex
+WorkSpace --> Vertex
+WorkSpaceTranspose --> Vertex
+WorkSpaceTranspose --> WorkSpace
+@enduml

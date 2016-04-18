@@ -707,8 +707,8 @@ public class Merger {
         w.write("\t</tr>\n");
         for(int a = 0;a<nodes.size(); a++){
             w.write("\t<tr>\n");
-            if(nodes.get(a).isVariability()) w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));font-weight: bold;\">"+nodes.get(a).getNodename()+"</td>\n");
-            else w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(0,0,255,1), rgba(0,0,255,0));font-weight: bold;\">"+nodes.get(a).getNodename()+"</td>\n"); 
+            if(nodes.get(a).isVariability()) w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));font-weight: bold;\">"+(a+1)+" "+nodes.get(a).getNodename()+"</td>\n");
+            else w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(0,0,255,1), rgba(0,0,255,0));font-weight: bold;\">"+(a+1)+" "+nodes.get(a).getNodename()+"</td>\n"); 
             for(int b = 0;b<nodes.size();b++)
             {
                 boolean found = false;
@@ -726,6 +726,11 @@ public class Merger {
                            break;
                        }
                     }
+                }
+                if(a == b)
+                {
+                    w.write("\t\t<td style=\"background: black\"></td>\n");
+                    continue;
                 }
                 if(found == false) w.write("\t\t<td></td>\n");       
             }
