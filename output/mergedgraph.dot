@@ -1,79 +1,21 @@
 digraph G {
-size= "15,15";
+size= "4,4";
 rotate = 180;
-"CycleWorkSpace"[label="CycleWorkSpace",shape=ellipse,color=red,fontcolor=black,style=""];
-"Edge"[label="Edge",shape=ellipse,color=red,fontcolor=black,style=""];
-"EdgeIfc"[label="EdgeIfc",shape=ellipse,color=blue,fontcolor=black,style=""];
-"EdgeIter"[label="EdgeIter",shape=ellipse,color=blue,fontcolor=black,style=""];
-"FinishTimeWorkSpace"[label="FinishTimeWorkSpace",shape=ellipse,color=red,fontcolor=black,style=""];
-"GlobalVarsWrapper"[label="GlobalVarsWrapper",shape=ellipse,color=red,fontcolor=black,style=""];
-"Graph"[label="Graph",shape=ellipse,color=blue,fontcolor=black,style=""];
+"BasicRectangle"[label="BasicRectangle",shape=ellipse,color=red,fontcolor=black,style=""];
+"Canvas"[label="Canvas",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Line"[label="Line",shape=ellipse,color=red,fontcolor=black,style=""];
 "Main"[label="Main",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Neighbor"[label="Neighbor",shape=ellipse,color=blue,fontcolor=black,style=""];
-"NeighborIfc"[label="NeighborIfc",shape=ellipse,color=blue,fontcolor=black,style=""];
-"NumberWorkSpace"[label="NumberWorkSpace",shape=ellipse,color=red,fontcolor=black,style=""];
-"Vertex"[label="Vertex",shape=ellipse,color=blue,fontcolor=black,style=""];
-"VertexIter"[label="VertexIter",shape=ellipse,color=blue,fontcolor=black,style=""];
-"WorkSpace"[label="WorkSpace",shape=ellipse,color=blue,fontcolor=black,style=""];
-"WorkSpaceTranspose"[label="WorkSpaceTranspose",shape=ellipse,color=red,fontcolor=black,style=""];
-"CycleWorkSpace" -> "Vertex" [color=red,font=6];
-"CycleWorkSpace" -> "WorkSpace" [color=red,font=6];
-"Edge" -> "EdgeIfc" [color=red,font=6];
-"Edge" -> "Neighbor" [color=red,font=6];
-"Edge" -> "Vertex" [color=red,font=6];
-"EdgeIfc" -> "Vertex" [color=blue,font=6];
-"EdgeIter" -> "EdgeIfc" [color=blue,font=6];
-"FinishTimeWorkSpace" -> "Vertex" [color=red,font=6];
-"FinishTimeWorkSpace" -> "WorkSpace" [color=red,font=6];
-"Graph" -> "Edge" [color=red,font=6];
-"Graph" -> "EdgeIfc" [color=blue,font=6];
-"Graph" -> "EdgeIter" [color=red,font=6];
-"Graph" -> "Neighbor" [color=blue,font=6];
-"Graph" -> "NumberWorkSpace" [color=red,font=6];
-"Graph" -> "Vertex" [color=blue,font=6];
-"Graph" -> "VertexIter" [color=blue,font=6];
-"Graph" -> "WorkSpace" [color=blue,font=6];
-"Graph" -> "FinishTimeWorkSpace" [color=red,font=6];
-"Graph" -> "WorkSpaceTranspose" [color=red,font=6];
-"Graph" -> "CycleWorkSpace" [color=red,font=6];
-"Main" -> "Graph" [color=blue,font=6];
-"Main" -> "Vertex" [color=blue,font=6];
-"Main" -> "VertexIter" [color=blue,font=6];
-"Neighbor" -> "Edge" [color=red,font=6];
-"Neighbor" -> "Vertex" [color=blue,font=6];
-"Neighbor" -> "EdgeIfc" [color=red,font=6];
-"Neighbor" -> "NeighborIfc" [color=red,font=6];
-"NumberWorkSpace" -> "Vertex" [color=red,font=6];
-"NumberWorkSpace" -> "WorkSpace" [color=red,font=6];
-"Vertex" -> "EdgeIfc" [color=red,font=6];
-"Vertex" -> "EdgeIter" [color=red,font=6];
-"Vertex" -> "GlobalVarsWrapper" [color=red,font=6];
-"Vertex" -> "Neighbor" [color=blue,font=6];
-"Vertex" -> "VertexIter" [color=blue,font=6];
-"Vertex" -> "WorkSpace" [color=blue,font=6];
-"VertexIter" -> "Vertex" [color=blue,font=6];
-"WorkSpace" -> "Vertex" [color=blue,font=6];
-"WorkSpaceTranspose" -> "Vertex" [color=red,font=6];
-"WorkSpaceTranspose" -> "WorkSpace" [color=red,font=6];
+"Canvas" -> "Line" [color=red,font=6];
+"Canvas" -> "BasicRectangle" [color=red,font=6];
+"Main" -> "Canvas" [color=blue,font=6];
 subgraph cluster_0{
 label = "Variability";
-"CycleWorkSpace"
-"Edge"
-"FinishTimeWorkSpace"
-"GlobalVarsWrapper"
-"NumberWorkSpace"
-"WorkSpaceTranspose"
+"BasicRectangle"
+"Line"
 }
 subgraph cluster_1{
 label = "Similarities" ;
-"EdgeIfc"
-"EdgeIter"
-"Graph"
+"Canvas"
 "Main"
-"Neighbor"
-"NeighborIfc"
-"Vertex"
-"VertexIter"
-"WorkSpace"
 }
 }

@@ -14,13 +14,13 @@ import java.util.Vector;
 public class NodeCompare{
    private Vector<String> nodename;
    private Vector<Node> dep;
+   private String pname;
 
     public NodeCompare() {
         nodename = new Vector(10,1);
         dep = new Vector(10,1);
     }
-
-   
+    
     public Vector getNodename() {
         return nodename;
     }
@@ -36,7 +36,15 @@ public class NodeCompare{
     public void setDep(Vector<Node> dep) {
         this.dep = dep;
     }
-   
-   
+    
+    public String getPname()
+    {
+        return pname;
+    }
+    
+    public void setPName(String p)
+    {
+        pname = p;
+    }
     
 }

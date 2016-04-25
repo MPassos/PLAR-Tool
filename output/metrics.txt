@@ -1,67 +1,20 @@
 METRICS REPORT:
 COMPONENT METRICS
-SSC:0.6
-SVC:0.4
-COMMON COMPONENTS TOTAL:9
-VARIABILITY COMPONENTS TOTAL:6
+SSC:0.5
+SVC:0.5
+COMMON COMPONENTS TOTAL:2
+VARIABILITY COMPONENTS TOTAL:2
 RELATION METRICS
-RSSC:0.41025642
-RSVC:0.5897436
-COMMON RELATIONS TOTAL:16
-VARIABILITY RELATIONS TOTAL:23
+RSSC:0.33333334
+RSVC:0.6666667
+COMMON RELATIONS TOTAL:1
+VARIABILITY RELATIONS TOTAL:2
 
 CRR FOR EACH COMPONENT
-CycleWorkSpace CCR:38.064514
-Edge CCR:80.645164
-EdgeIfc CCR:100.0
-EdgeIter CCR:100.0
-FinishTimeWorkSpace CCR:46.451614
-GlobalVarsWrapper CCR:15.483871
-Graph CCR:100.0
-Main CCR:100.0
-Neighbor CCR:100.0
-NeighborIfc CCR:100.0
-NumberWorkSpace CCR:61.935486
-Vertex CCR:100.0
-VertexIter CCR:100.0
-WorkSpace CCR:100.0
+BasicRectangle CCR:66.66667
+Canvas CCR:100.0
+Line CCR:66.66667
 
 CRR FOR EACH RELATION
-CycleWorkSpace Vertex CCR:38.064514
-CycleWorkSpace WorkSpace CCR:38.064514
-Edge EdgeIfc CCR:80.645164
-Edge Neighbor CCR:61.290325
-Edge Vertex CCR:80.645164
-EdgeIfc Vertex CCR:100.0
-EdgeIter EdgeIfc CCR:100.0
-FinishTimeWorkSpace Vertex CCR:46.451614
-FinishTimeWorkSpace WorkSpace CCR:46.451614
-Graph Edge CCR:61.290325
-Graph EdgeIfc CCR:100.0
-Graph EdgeIter CCR:61.290325
-Graph Neighbor CCR:100.0
-Graph NumberWorkSpace CCR:61.935486
-Graph Vertex CCR:100.0
-Graph VertexIter CCR:100.0
-Graph WorkSpace CCR:100.0
-Graph FinishTimeWorkSpace CCR:46.451614
-Graph WorkSpaceTranspose CCR:46.451614
-Graph CycleWorkSpace CCR:38.064514
-Main Graph CCR:100.0
-Main Vertex CCR:100.0
-Main VertexIter CCR:100.0
-Neighbor Edge CCR:61.290325
-Neighbor Vertex CCR:100.0
-Neighbor EdgeIfc CCR:38.709675
-Neighbor NeighborIfc CCR:38.709675
-NumberWorkSpace Vertex CCR:61.935486
-NumberWorkSpace WorkSpace CCR:61.935486
-Vertex EdgeIfc CCR:61.290325
-Vertex EdgeIter CCR:61.290325
-Vertex GlobalVarsWrapper CCR:15.483871
-Vertex Neighbor CCR:100.0
-Vertex VertexIter CCR:100.0
-Vertex WorkSpace CCR:100.0
-VertexIter Vertex CCR:100.0
-WorkSpace Vertex CCR:100.0
-WorkSpaceTranspose Vertex CCR:46.451614
+Canvas Line CCR:66.66667
+Canvas BasicRectangle CCR:66.66667

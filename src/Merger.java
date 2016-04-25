@@ -2,6 +2,7 @@
 import java.io.*;
 import java.util.Collections;
 import java.util.Vector;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -405,6 +406,8 @@ public class Merger {
                 }
 
             }
+            String product[] = files[i].getName().split(Pattern.quote(".tgf"));
+            aux.setPName(product[0]);
             folderdep.add(aux);
         }
     }
@@ -431,13 +434,13 @@ public class Merger {
 
                     if (nodes.get(k).getNodename() == null) {
                         nodes.get(k).setNodename(naux.getNodename());
-                        nodes.get(k).setProducts("Product " + (i + 1));
+                        nodes.get(k).setProducts(folderdep.get(i).getPname());
                         nodes.add(new GraphNode());
                         break;
                     }
                     if (nodes.get(k).getNodename().equals(naux.getNodename())) {
                         //nodes.get(k).setVariability(false);
-                        nodes.get(k).setProducts("Product " + (i + 1));
+                        nodes.get(k).setProducts(folderdep.get(i).getPname());
                         if(nodes.get(k).getProducts().size() == folderdep.size())
                         {
                           nodes.get(k).setVariability(false);  
@@ -453,7 +456,7 @@ public class Merger {
                 daux.setDependency(depnames.get(a).getNode() + " " + depnames.get(a).getDepends());
                 daux.setNode(depnames.get(a).getNode());
                 daux.setDepends(depnames.get(a).getDepends());
-                daux.setProducts("Product " + (i + 1));
+                daux.setProducts(folderdep.get(i).getPname());
 
                 if (deps.isEmpty()) {
                     //deps.add(daux);
@@ -465,13 +468,13 @@ public class Merger {
                         deps.get(b).setDependency(daux.getDependency());
                         deps.get(b).setNode(daux.getNode());
                         deps.get(b).setDepends(daux.getDepends());
-                        deps.get(b).setProducts("Product " + (i + 1));
+                        deps.get(b).setProducts(folderdep.get(i).getPname());
                         deps.add(new GraphDep());
                         break;
                     }
                     if (deps.get(b).getDependency().equals(daux.getDependency())) {
                         //deps.get(b).setVariability(false);
-                        deps.get(b).setProducts("Product " + (i + 1));
+                        deps.get(b).setProducts(folderdep.get(i).getPname());
                         if(deps.get(b).getProducts().size() == folderdep.size())
                         {
                           deps.get(b).setVariability(false);  
