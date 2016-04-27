@@ -489,8 +489,8 @@ public class Merger {
         Collections.sort(nodes);
         Collections.sort(deps);
         printReport(nodes, deps);
-        printBUNCH(deps);
-        printACDC(deps);
+        //printBUNCH(deps);
+        //printACDC(deps);
         printGraph(nodes, deps);
         metrics(nodes, deps);
         printUML(nodes,deps);
@@ -704,14 +704,14 @@ public class Merger {
         w.write("\t<tr>\n");
         w.write("\t\t<td></td>\n");
         for(int i = 0; i<nodes.size();i++){
-              if(nodes.get(i).isVariability()) w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n");
-              else w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(0,0,255,1), rgba(0,0,255,0));font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n"); 
+              if(nodes.get(i).isVariability()) w.write("\t\t<td style = \"color: white; background: red;font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n");
+              else w.write("\t\t<td style = \"color: white; background: blue;font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n"); 
         }
         w.write("\t</tr>\n");
         for(int a = 0;a<nodes.size(); a++){
             w.write("\t<tr>\n");
-            if(nodes.get(a).isVariability()) w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,0));font-weight: bold;\">"+(a+1)+" "+nodes.get(a).getNodename()+"</td>\n");
-            else w.write("\t\t<td style = \"color: white; background: linear-gradient(rgba(0,0,255,1), rgba(0,0,255,0));font-weight: bold;\">"+(a+1)+" "+nodes.get(a).getNodename()+"</td>\n"); 
+            if(nodes.get(a).isVariability()) w.write("\t\t<td style = \"color: white; background: red;font-weight: bold;\">"+(a+1)+" "+nodes.get(a).getNodename()+"</td>\n");
+            else w.write("\t\t<td style = \"color: white; background: blue;font-weight: bold;\">"+(a+1)+" "+nodes.get(a).getNodename()+"</td>\n"); 
             for(int b = 0;b<nodes.size();b++)
             {
                 boolean found = false;
