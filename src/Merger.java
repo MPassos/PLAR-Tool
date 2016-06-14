@@ -559,7 +559,7 @@ public class Merger {
         FileWriter writer = new FileWriter(graph);
         BufferedWriter w = new BufferedWriter(writer);
         String sim = "", var = "";
-
+        
         w.write("digraph G {\n" + "size= \"" + nodes.size() + "," + nodes.size() + "\";\n" + "rotate = 180;\n");
 
         for (int i = 0; i < nodes.size(); i++) {
@@ -588,6 +588,20 @@ public class Merger {
         w.write("}\n");
         w.write("}");
         w.close();
+        
+        //Checking OS to do proper SVG conversion
+       if(System.getProperty("os.name").startsWith("Windows"))
+       {
+        Runtime.getRuntime().exec("cmd /c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
+       }else
+       if(System.getProperty("os.name").startsWith("Linux"))
+       {
+        Runtime.getRuntime().exec("sh -c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
+       }else
+       if(System.getProperty("os.name").startsWith("Mac"))
+       {
+        Runtime.getRuntime().exec("sh -c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg"); 
+       }
     }
 
     private void printACDC(Vector<GraphDep> deps) throws IOException {
