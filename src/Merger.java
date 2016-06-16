@@ -659,15 +659,15 @@ public class Merger {
         w.write("COMMON RELATIONS TOTAL:" + (int) Rc + "\n");
         w.write("VARIABILITY RELATIONS TOTAL:" + (int) Rv + "\n");
         w.write("\nCRR FOR EACH COMPONENT\n");
-        for (int j = 0; j < nodes.size() - 1; j++) {
+        for (int j = 0; j < nodes.size(); j++) {
             CCR = ((float) nodes.get(j).getProducts().size() / (float) folderdep.size()) * 100;
-            w.write(nodes.get(j).getNodename() + " CCR:" + CCR + "\n");
+            w.write(nodes.get(j).getNodename() + " CRR:" + CCR + "\n");
 
         }
         w.write("\nCRR FOR EACH RELATION\n");
-        for (int b = 0; b < deps.size() - 1; b++) {
+        for (int b = 0; b < deps.size(); b++) {
             RCCR = ((float) deps.get(b).getProducts().size() / (float) folderdep.size()) * 100;
-            w.write(deps.get(b).getDependency() + " CCR:" + RCCR + "\n");
+            w.write(deps.get(b).getDependency() + " CRR:" + RCCR + "\n");
         }
 
         w.close();
