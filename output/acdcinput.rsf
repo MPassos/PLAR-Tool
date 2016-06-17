@@ -1,3 +1,0 @@
-depends Canvas Line
-depends Canvas BasicRectangle
-depends Main Canvas

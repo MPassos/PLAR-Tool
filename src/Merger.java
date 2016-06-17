@@ -593,14 +593,17 @@ public class Merger {
        if(System.getProperty("os.name").startsWith("Windows"))
        {
         Runtime.getRuntime().exec("cmd /c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
+        Runtime.getRuntime().exec("cmd /c copy resources\\Interactive.html output ");
        }else
        if(System.getProperty("os.name").startsWith("Linux"))
        {
         Runtime.getRuntime().exec("sh -c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
+        Runtime.getRuntime().exec("sh -c cp resources\\Interactive.html output ");
        }else
        if(System.getProperty("os.name").startsWith("Mac"))
        {
-        Runtime.getRuntime().exec("sh -c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg"); 
+        Runtime.getRuntime().exec("sh -c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
+        Runtime.getRuntime().exec("sh -c cp resources\\Interactive.html output ");
        }
     }
 
