@@ -715,14 +715,40 @@ public class Merger {
         BufferedWriter w = new BufferedWriter(writer);
         
         w.write("<!DOCTYPE html>\n<html>\n<head>\n<style>\ntable, td, th {\n\tborder: 2px solid black;\n}\n"
+                + "td{\n\toverflow:hidden;\n\twhite-space:nowrap;\n}\n "
                 + "</style>\n</head>\n<body>\n");
         w.write("<h2 style=\"text-align: center\">Adjacency matrix</h2>\n");
         w.write("<table style=\"border-collapse: collapse;\">\n");
         w.write("\t<tr>\n");
         w.write("\t\t<td></td>\n");
-        for(int i = 0; i<nodes.size();i++){
-              if(nodes.get(i).isVariability()) w.write("\t\t<td style = \"color: white; background: red;font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n");
-              else w.write("\t\t<td style = \"color: white; background: blue;font-weight: bold;width:20px;text-align: center;\">"+(i+1)+"</td>\n"); 
+        for (int i = 0; i < nodes.size(); i++) {
+            if (i < 9 && nodes.size() < 100) {
+                if (nodes.get(i).isVariability()) {
+                    w.write("\t\t<td style = \"color: white; background: red;font-weight: bold;width:20px;text-align: center;\">" + "0" + (i + 1) + "</td>\n");
+                } else {
+                    w.write("\t\t<td style = \"color: white; background: blue;font-weight: bold;width:20px;text-align: center;\">" + "0" + (i + 1) + "</td>\n");
+                }
+            } else {
+                if (i < 9 && (nodes.size() > 100 && nodes.size() < 1000)) {
+                    if (nodes.get(i).isVariability()) {
+                        w.write("\t\t<td style = \"color: white; background: red;font-weight: bold;width:20px;text-align: center;\">" + "00" + (i + 1) + "</td>\n");
+                    } else {
+                        w.write("\t\t<td style = \"color: white; background: blue;font-weight: bold;width:20px;text-align: center;\">" + "00" + (i + 1) + "</td>\n");
+                    }
+                } else {
+                    if ((i >= 9 && i < 99) && (nodes.size() > 100 && nodes.size() < 1000)) {
+                        if (nodes.get(i).isVariability()) {
+                            w.write("\t\t<td style = \"color: white; background: red;font-weight: bold;width:20px;text-align: center;\">" + "0" + (i + 1) + "</td>\n");
+                        } else {
+                            w.write("\t\t<td style = \"color: white; background: blue;font-weight: bold;width:20px;text-align: center;\">" + "0" + (i + 1) + "</td>\n");
+                        }
+                    } else if (nodes.get(i).isVariability()) {
+                        w.write("\t\t<td style = \"color: white; background: red;font-weight: bold;width:20px;text-align: center;\">" + (i + 1) + "</td>\n");
+                    } else {
+                        w.write("\t\t<td style = \"color: white; background: blue;font-weight: bold;width:20px;text-align: center;\">" + (i + 1) + "</td>\n");
+                    }
+                }
+            }
         }
         w.write("\t</tr>\n");
         for(int a = 0;a<nodes.size(); a++){
