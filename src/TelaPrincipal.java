@@ -396,8 +396,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             m.getFolderDep();
             m.merge();
             //m.printAll();
+            Runtime.getRuntime().exec("cmd /c copy resources\\index.html output ");
+            Runtime.getRuntime().exec("cmd /c cd output && index.html");
             JOptionPane.showMessageDialog(null, "Success", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error", "A problem occured:"+ex, JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton9ActionPerformed

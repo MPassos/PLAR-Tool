@@ -516,30 +516,32 @@ public class Merger {
     }
 
     private void printReport(Vector<GraphNode> node, Vector<GraphDep> dep) throws IOException {
-        File report = new File("output/report.txt");
+        File report = new File("output/report.html");
         FileWriter writer = new FileWriter(report);
         BufferedWriter w = new BufferedWriter(writer);
-
-        w.write("Nodes:\n");
+        
+        w.write("<html>\n\t<body>\n\t\t<div style=\"font-family:Helvetica, Arial, sans-serif\">");
+        w.write("<p style = \"font-weight:bold\">Nodes:</p>\n");
         for (int i = 0; i < node.size(); i++) {
-            String aux = "";
+            String aux = "<p>";
             aux += node.get(i).getNodename() + " ";
             for (int j = 0; j < node.get(i).getProducts().size(); j++) {
                 aux += node.get(i).getProducts().get(j) + " ";
             }
-            aux += "\n";
+            aux += "</p>\n";
             w.write(aux);
         }
-        w.write("\nDependencies:\n");
+        w.write("<p style = \"font-weight:bold\">Dependencies:</p>\n");
         for (int a = 0; a < dep.size(); a++) {
-            String aux = "";
+            String aux = "<p>";
             aux += dep.get(a).getDependency() + " ";
             for (int b = 0; b < dep.get(a).getProducts().size(); b++) {
                 aux += dep.get(a).getProducts().get(b) + " ";
             }
-            aux += "\n";
+            aux += "</p>\n";
             w.write(aux);
         }
+        w.write("\t\t</div>\n\t</body>\n</html>");
         w.close();
     }
 
@@ -619,7 +621,7 @@ public class Merger {
     }
 
     private void metrics(Vector<GraphNode> nodes, Vector<GraphDep> deps) throws IOException {
-        File metrics = new File("output/metrics.txt");
+        File metrics = new File("output/metrics.html");
         FileWriter writer = new FileWriter(metrics);
         BufferedWriter w = new BufferedWriter(writer);
         //Components Metrics
@@ -649,30 +651,32 @@ public class Merger {
         }
         RSSC = Rc / (Rc + Rv);
         RSVC = Rv / (Rc + Rv);
-
-        w.write("METRICS REPORT:\n");
-        w.write("COMPONENT METRICS\n");
-        w.write("SSC:" + SSC + "\n");
-        w.write("SVC:" + SVC + "\n");
-        w.write("COMMON COMPONENTS TOTAL:" + (int) Cc + "\n");
-        w.write("VARIABILITY COMPONENTS TOTAL:" + (int) Cv + "\n");
-        w.write("RELATION METRICS\n");
-        w.write("RSSC:" + RSSC + "\n");
-        w.write("RSVC:" + RSVC + "\n");
-        w.write("COMMON RELATIONS TOTAL:" + (int) Rc + "\n");
-        w.write("VARIABILITY RELATIONS TOTAL:" + (int) Rv + "\n");
-        w.write("\nCRR FOR EACH COMPONENT\n");
+        
+        w.write("<html>\n\t<body>\n");
+        w.write("\t\t<div style=\"font-family:Helvetica, Arial, sans-serif\">");
+        w.write("\t\t\t<h1 style=\"text-align: center;\">METRICS REPORT</h1>\n");
+        w.write("\t\t\t<p>COMPONENT METRICS</p>\n");
+        w.write("\t\t\t<p>SSC:" + SSC + "</p>\n");
+        w.write("\t\t\t<p>SVC:" + SVC + "</p>\n");
+        w.write("\t\t\t<p>COMMON COMPONENTS TOTAL:" + (int) Cc + "</p>\n");
+        w.write("\t\t\t<p>VARIABILITY COMPONENTS TOTAL:" + (int) Cv + "</p>\n");
+        w.write("\t\t\t<p>RELATION METRICS</p>\n");
+        w.write("\t\t\t<p>RSSC:" + RSSC + "</p>\n");
+        w.write("\t\t\t<p>RSVC:" + RSVC + "</p>\n");
+        w.write("\t\t\t<p>COMMON RELATIONS TOTAL:" + (int) Rc + "</p>\n");
+        w.write("\t\t\t<p>VARIABILITY RELATIONS TOTAL:" + (int) Rv + "</p>\n");
+        w.write("\t\t\t<p>CRR FOR EACH COMPONENT</p>\n");
         for (int j = 0; j < nodes.size(); j++) {
             CCR = ((float) nodes.get(j).getProducts().size() / (float) folderdep.size()) * 100;
-            w.write(nodes.get(j).getNodename() + " CRR:" + CCR + "\n");
+            w.write("\t\t\t<p>"+nodes.get(j).getNodename() + " CRR:" + CCR + "</p>\n");
 
         }
-        w.write("\nCRR FOR EACH RELATION\n");
+        w.write("\t\t\t<p>CRR FOR EACH RELATION</p>\n");
         for (int b = 0; b < deps.size(); b++) {
             RCCR = ((float) deps.get(b).getProducts().size() / (float) folderdep.size()) * 100;
-            w.write(deps.get(b).getDependency() + " CRR:" + RCCR + "\n");
+            w.write("\t\t\t<p>"+deps.get(b).getDependency() + " CRR:" + RCCR + "</p>\n");
         }
-
+        w.write("\t\t</div>\n\t</body>\n</html>");
         w.close();
     }
 
