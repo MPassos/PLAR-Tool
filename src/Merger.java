@@ -721,7 +721,7 @@ public class Merger {
         w.write("<!DOCTYPE html>\n<html>\n<head>\n<style>\ntable, td, th {\n\tborder: 2px solid black;\n}\n"
                 + "td{\n\toverflow:hidden;\n\twhite-space:nowrap;\n}\n "
                 + "</style>\n</head>\n<body>\n");
-        w.write("<h2 style=\"text-align: center\">Adjacency matrix</h2>\n");
+        w.write("<h2 style=\"text-align: center\">Design Structure Matrix</h2>\n");
         w.write("<table style=\"border-collapse: collapse;\">\n");
         w.write("\t<tr>\n");
         w.write("\t\t<td></td>\n");
