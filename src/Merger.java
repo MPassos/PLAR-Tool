@@ -227,7 +227,7 @@ public class Merger {
             comp2 = (String) no2.get(j);
 
             if (comp1.compareTo(comp2) < 0) {
-                ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=purple,fontcolor=black,style=\"\"];\n");
+                ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=purple, style = dotted,fontcolor=black];\n");
                 var += "\"" + no1.get(i) + "\";\n";
                 i++;
             }
@@ -238,7 +238,7 @@ public class Merger {
                 j++;
             }
             if (comp1.compareTo(comp2) > 0) {
-                ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=green,fontcolor=black,style=\"\"];\n");
+                ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=green, style = dashed,fontcolor=black];\n");
                 var += "\"" + no2.get(j) + "\";\n";
                 j++;
             }
@@ -246,14 +246,14 @@ public class Merger {
 
         while (i < no1.size()) {
             comp1 = (String) no1.get(i);
-            ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=purple,fontcolor=black,style=\"\"];\n");
+            ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=purple,fontcolor=black];\n");
             var += "\"" + no1.get(i) + "\";\n";
             i++;
         }
 
         while (j < no2.size()) {
             comp2 = (String) no2.get(j);
-            ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=green,fontcolor=black,style=\"\"];\n");
+            ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=green,fontcolor=black];\n");
             var += "\"" + no2.get(j) + "\";\n";
             j++;
         }
@@ -267,17 +267,17 @@ public class Merger {
             dep2 = aux2.getNode() + " " + aux2.getDepends();
 
             if (dep1.compareTo(dep2) < 0) {
-                ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=purple,font=6];\n");
+                ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=purple, style = dotted,font=6];\n");
                 i++;
             }
             if (dep1.compareTo(dep2) == 0) {
-                ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=\"#3366FF55\",font=6];\n");
+                ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=blue,font=6];\n");
                 i++;
                 j++;
             }
 
             if (dep1.compareTo(dep2) > 0) {
-                ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=green,font=6];\n");
+                ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=green, style = dashed,font=6];\n");
                 j++;
             }
         }
@@ -303,8 +303,8 @@ public class Merger {
         ebuffer1.write("}\n");
 
         ebuffer1.write("subgraph cluster_2{\nlabel = \"Legend\" ;\n");
-        ebuffer1.write("\"Product 1\"[color=purple];\n ");
-        ebuffer1.write("\"Product 2\"[color=green];\n ");
+        ebuffer1.write("\"Product 1\"[color=purple, style = dotted];\n ");
+        ebuffer1.write("\"Product 2\"[color=green, style = dashed];\n ");
         ebuffer1.write("}\n");
         ebuffer1.write("}");
         ebuffer1.close();
@@ -569,7 +569,7 @@ public class Merger {
                 w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse,color=blue,fontcolor=black,style=\"\"];\n");
                 sim += "\"" + nodes.get(i).getNodename() + "\"" + "\n";
             } else {
-                w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse,color=red,fontcolor=black,style=\"\"];\n");
+                w.write("\"" + nodes.get(i).getNodename() + "\"" + "[label=" + "\"" + nodes.get(i).getNodename() + "\"" + ",shape=ellipse, color=\"#FF000055\", style = dotted,fontcolor=black];\n");
                 var += "\"" + nodes.get(i).getNodename() + "\"" + "\n";
             }
         }
@@ -578,7 +578,7 @@ public class Merger {
             if (deps.get(j).getProducts().size() == folderdep.size()) {
                 w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends() + "\" " + "[color=blue,font=6];\n");
             } else {
-                w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends() + "\" " + "[color=red,font=6];\n");
+                w.write("\"" + deps.get(j).getNode() + "\"" + " -> " + "\"" + deps.get(j).getDepends() + "\" " + "[color=\"#FF000055\", font=6];\n");
             }
         }
         w.write("subgraph cluster_0{\nlabel = \"Variability\";\n");
