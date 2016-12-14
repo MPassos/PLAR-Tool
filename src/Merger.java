@@ -769,10 +769,10 @@ public class Merger {
                     {
                         found = true;
                        if(deps.get(c).isVariability()){
-                           w.write("\t\t<td style=\"background: red\"></td>\n");
+                           w.write("\t\t<td style=\"background: red\" title=\""+nodes.get(a).getNodename()+" "+nodes.get(b).getNodename()+"\"></td>\n");
                            break;
                        } else{
-                           w.write("\t\t<td style=\"background: blue\"></td>\n");
+                            w.write("\t\t<td style=\"background: blue\" title=\""+nodes.get(a).getNodename()+" "+nodes.get(b).getNodename()+"\"></td>\n");
                            break;
                        }
                     }

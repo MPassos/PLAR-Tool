@@ -1,229 +1,32 @@
 digraph G {
-size= "41,41";
+size= "7,7";
 rotate = 180;
-"ButtonListener"[label="ButtonListener",shape=ellipse,color=red,fontcolor=black,style=""];
-"ButtonListener$$GUI"[label="ButtonListener$$GUI",shape=ellipse,color=red,fontcolor=black,style=""];
-"ButtonListener$$Index_History"[label="ButtonListener$$Index_History",shape=ellipse,color=red,fontcolor=black,style=""];
-"ButtonListener$$Multi_Directory"[label="ButtonListener$$Multi_Directory",shape=ellipse,color=red,fontcolor=black,style=""];
-"ButtonListener$$Single_Directory"[label="ButtonListener$$Single_Directory",shape=ellipse,color=red,fontcolor=black,style=""];
-"Commandline"[label="Commandline",shape=ellipse,color=red,fontcolor=black,style=""];
-"ContentHandler"[label="ContentHandler",shape=ellipse,color=blue,fontcolor=black,style=""];
-"HTML"[label="HTML",shape=ellipse,color=red,fontcolor=black,style=""];
-"History_Indexer"[label="History_Indexer",shape=ellipse,color=red,fontcolor=black,style=""];
-"History_Query"[label="History_Query",shape=ellipse,color=red,fontcolor=black,style=""];
-"HitComponentLabel"[label="HitComponentLabel",shape=ellipse,color=red,fontcolor=black,style=""];
-"HitDocument"[label="HitDocument",shape=ellipse,color=red,fontcolor=black,style=""];
-"Index_History_Selector"[label="Index_History_Selector",shape=ellipse,color=red,fontcolor=black,style=""];
-"Indexer"[label="Indexer",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Indexer$$Base"[label="Indexer$$Base",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Indexer$$Commandline"[label="Indexer$$Commandline",shape=ellipse,color=red,fontcolor=black,style=""];
-"Indexer$$HTML"[label="Indexer$$HTML",shape=ellipse,color=red,fontcolor=black,style=""];
-"Indexer$$Multi_Directory"[label="Indexer$$Multi_Directory",shape=ellipse,color=red,fontcolor=black,style=""];
-"Indexer$$Single_Directory"[label="Indexer$$Single_Directory",shape=ellipse,color=red,fontcolor=black,style=""];
-"Indexer$$TXT"[label="Indexer$$TXT",shape=ellipse,color=red,fontcolor=black,style=""];
-"IndexerException"[label="IndexerException",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Latex"[label="Latex",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame"[label="MainFrame",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame$$GUI"[label="MainFrame$$GUI",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame$$Index_History"[label="MainFrame$$Index_History",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame$$Multi_Directory"[label="MainFrame$$Multi_Directory",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame$$Normal_View"[label="MainFrame$$Normal_View",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame$$Query_History"[label="MainFrame$$Query_History",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame$$Single_Directory"[label="MainFrame$$Single_Directory",shape=ellipse,color=red,fontcolor=black,style=""];
-"MainFrame$$Tree_View"[label="MainFrame$$Tree_View",shape=ellipse,color=red,fontcolor=black,style=""];
-"MrPinkMain"[label="MrPinkMain",shape=ellipse,color=blue,fontcolor=black,style=""];
-"MrPinkMain$$Base"[label="MrPinkMain$$Base",shape=ellipse,color=blue,fontcolor=black,style=""];
-"MrPinkMain$$GUI"[label="MrPinkMain$$GUI",shape=ellipse,color=red,fontcolor=black,style=""];
-"MrPinkMain$$User_Interface"[label="MrPinkMain$$User_Interface",shape=ellipse,color=blue,fontcolor=black,style=""];
-"NoDocument"[label="NoDocument",shape=ellipse,color=red,fontcolor=black,style=""];
-"OS"[label="OS",shape=ellipse,color=blue,fontcolor=black,style=""];
-"OptionStorage"[label="OptionStorage",shape=ellipse,color=blue,fontcolor=black,style=""];
-"OptionWindow"[label="OptionWindow",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Plain"[label="Plain",shape=ellipse,color=red,fontcolor=black,style=""];
-"SearchResultTree"[label="SearchResultTree",shape=ellipse,color=red,fontcolor=black,style=""];
-"UI"[label="UI",shape=ellipse,color=blue,fontcolor=black,style=""];
-"ButtonListener" -> "ButtonListener$$GUI" [color=red,font=6];
-"ButtonListener" -> "MainFrame" [color=red,font=6];
-"ButtonListener" -> "MainFrame$$Single_Directory" [color=red,font=6];
-"ButtonListener" -> "ButtonListener$$Index_History" [color=red,font=6];
-"ButtonListener" -> "ButtonListener$$Multi_Directory" [color=red,font=6];
-"ButtonListener" -> "MainFrame$$GUI" [color=red,font=6];
-"ButtonListener" -> "OptionStorage" [color=red,font=6];
-"ButtonListener" -> "OptionWindow" [color=red,font=6];
-"ButtonListener" -> "ButtonListener$$Single_Directory" [color=red,font=6];
-"ButtonListener" -> "MainFrame$$Multi_Directory" [color=red,font=6];
-"ButtonListener" -> "Index_History_Selector" [color=red,font=6];
-"ButtonListener" -> "MainFrame$$Index_History" [color=red,font=6];
-"ButtonListener$$GUI" -> "MainFrame" [color=red,font=6];
-"ButtonListener$$GUI" -> "MainFrame$$GUI" [color=red,font=6];
-"ButtonListener$$GUI" -> "OptionStorage" [color=red,font=6];
-"ButtonListener$$Index_History" -> "ButtonListener$$GUI" [color=red,font=6];
-"ButtonListener$$Index_History" -> "ButtonListener$$Multi_Directory" [color=red,font=6];
-"ButtonListener$$Index_History" -> "Index_History_Selector" [color=red,font=6];
-"ButtonListener$$Index_History" -> "MainFrame" [color=red,font=6];
-"ButtonListener$$Index_History" -> "MainFrame$$Index_History" [color=red,font=6];
-"ButtonListener$$Index_History" -> "ButtonListener$$Single_Directory" [color=red,font=6];
-"ButtonListener$$Multi_Directory" -> "ButtonListener$$GUI" [color=red,font=6];
-"ButtonListener$$Multi_Directory" -> "MainFrame" [color=red,font=6];
-"ButtonListener$$Multi_Directory" -> "MainFrame$$Multi_Directory" [color=red,font=6];
-"ButtonListener$$Single_Directory" -> "ButtonListener$$GUI" [color=red,font=6];
-"ButtonListener$$Single_Directory" -> "MainFrame" [color=red,font=6];
-"ButtonListener$$Single_Directory" -> "MainFrame$$Single_Directory" [color=red,font=6];
-"Commandline" -> "Indexer" [color=red,font=6];
-"Commandline" -> "MrPinkMain" [color=red,font=6];
-"Commandline" -> "OptionStorage" [color=red,font=6];
-"Commandline" -> "UI" [color=red,font=6];
-"HTML" -> "ContentHandler" [color=red,font=6];
-"History_Indexer" -> "Index_History_Selector" [color=red,font=6];
-"HitDocument" -> "HitComponentLabel" [color=red,font=6];
-"HitDocument" -> "OS" [color=red,font=6];
-"Index_History_Selector" -> "History_Indexer" [color=red,font=6];
-"Index_History_Selector" -> "MainFrame" [color=red,font=6];
-"Index_History_Selector" -> "MainFrame$$Index_History" [color=red,font=6];
-"Indexer" -> "Indexer$$Base" [color=blue,font=6];
-"Indexer" -> "Indexer$$Single_Directory" [color=red,font=6];
-"Indexer" -> "IndexerException" [color=blue,font=6];
-"Indexer" -> "Latex" [color=red,font=6];
-"Indexer" -> "Indexer$$TXT" [color=red,font=6];
-"Indexer" -> "HTML" [color=red,font=6];
-"Indexer" -> "Indexer$$Commandline" [color=red,font=6];
-"Indexer" -> "Plain" [color=red,font=6];
-"Indexer" -> "Indexer$$HTML" [color=red,font=6];
-"Indexer" -> "Indexer$$Multi_Directory" [color=red,font=6];
-"Indexer$$Base" -> "ContentHandler" [color=blue,font=6];
-"Indexer$$Base" -> "IndexerException" [color=blue,font=6];
-"Indexer$$Commandline" -> "ContentHandler" [color=red,font=6];
-"Indexer$$Commandline" -> "Indexer$$Base" [color=red,font=6];
-"Indexer$$Commandline" -> "IndexerException" [color=red,font=6];
-"Indexer$$HTML" -> "HTML" [color=red,font=6];
-"Indexer$$HTML" -> "Indexer$$Base" [color=red,font=6];
-"Indexer$$HTML" -> "Indexer$$Multi_Directory" [color=red,font=6];
-"Indexer$$HTML" -> "IndexerException" [color=red,font=6];
-"Indexer$$Multi_Directory" -> "ContentHandler" [color=red,font=6];
-"Indexer$$Multi_Directory" -> "Indexer$$Base" [color=red,font=6];
-"Indexer$$Multi_Directory" -> "IndexerException" [color=red,font=6];
-"Indexer$$Single_Directory" -> "ContentHandler" [color=red,font=6];
-"Indexer$$Single_Directory" -> "Indexer$$Base" [color=red,font=6];
-"Indexer$$Single_Directory" -> "IndexerException" [color=red,font=6];
-"Indexer$$TXT" -> "Indexer$$Base" [color=red,font=6];
-"Indexer$$TXT" -> "Indexer$$Multi_Directory" [color=red,font=6];
-"Indexer$$TXT" -> "IndexerException" [color=red,font=6];
-"Indexer$$TXT" -> "Plain" [color=red,font=6];
-"Indexer$$TXT" -> "Indexer$$Commandline" [color=red,font=6];
-"Latex" -> "ContentHandler" [color=red,font=6];
-"MainFrame" -> "HitDocument" [color=red,font=6];
-"MainFrame" -> "Indexer" [color=red,font=6];
-"MainFrame" -> "MainFrame$$GUI" [color=red,font=6];
-"MainFrame" -> "MainFrame$$Single_Directory" [color=red,font=6];
-"MainFrame" -> "MrPinkMain" [color=red,font=6];
-"MainFrame" -> "NoDocument" [color=red,font=6];
-"MainFrame" -> "ButtonListener" [color=red,font=6];
-"MainFrame" -> "MainFrame$$Tree_View" [color=red,font=6];
-"MainFrame" -> "MainFrame$$Normal_View" [color=red,font=6];
-"MainFrame" -> "MainFrame$$Multi_Directory" [color=red,font=6];
-"MainFrame" -> "SearchResultTree" [color=red,font=6];
-"MainFrame" -> "MainFrame$$Index_History" [color=red,font=6];
-"MainFrame" -> "MainFrame$$Query_History" [color=red,font=6];
-"MainFrame$$GUI" -> "ButtonListener" [color=red,font=6];
-"MainFrame$$GUI" -> "Indexer" [color=red,font=6];
-"MainFrame$$GUI" -> "MainFrame" [color=red,font=6];
-"MainFrame$$GUI" -> "MrPinkMain" [color=red,font=6];
-"MainFrame$$GUI" -> "OptionStorage" [color=red,font=6];
-"MainFrame$$GUI" -> "UI" [color=red,font=6];
-"MainFrame$$Index_History" -> "MainFrame$$Query_History" [color=red,font=6];
-"MainFrame$$Index_History" -> "MrPinkMain" [color=red,font=6];
-"MainFrame$$Index_History" -> "MainFrame$$Multi_Directory" [color=red,font=6];
-"MainFrame$$Multi_Directory" -> "ButtonListener" [color=red,font=6];
-"MainFrame$$Multi_Directory" -> "MainFrame" [color=red,font=6];
-"MainFrame$$Multi_Directory" -> "MainFrame$$GUI" [color=red,font=6];
-"MainFrame$$Multi_Directory" -> "MrPinkMain" [color=red,font=6];
-"MainFrame$$Normal_View" -> "HitDocument" [color=red,font=6];
-"MainFrame$$Normal_View" -> "Indexer" [color=red,font=6];
-"MainFrame$$Normal_View" -> "MainFrame$$GUI" [color=red,font=6];
-"MainFrame$$Normal_View" -> "MainFrame$$Single_Directory" [color=red,font=6];
-"MainFrame$$Normal_View" -> "MrPinkMain" [color=red,font=6];
-"MainFrame$$Normal_View" -> "NoDocument" [color=red,font=6];
-"MainFrame$$Query_History" -> "History_Query" [color=red,font=6];
-"MainFrame$$Query_History" -> "MainFrame$$GUI" [color=red,font=6];
-"MainFrame$$Query_History" -> "MainFrame$$Multi_Directory" [color=red,font=6];
-"MainFrame$$Query_History" -> "MrPinkMain" [color=red,font=6];
-"MainFrame$$Query_History" -> "MainFrame$$Single_Directory" [color=red,font=6];
-"MainFrame$$Single_Directory" -> "ButtonListener" [color=red,font=6];
-"MainFrame$$Single_Directory" -> "MainFrame" [color=red,font=6];
-"MainFrame$$Single_Directory" -> "MainFrame$$GUI" [color=red,font=6];
-"MainFrame$$Single_Directory" -> "MrPinkMain" [color=red,font=6];
-"MainFrame$$Tree_View" -> "HitDocument" [color=red,font=6];
-"MainFrame$$Tree_View" -> "Indexer" [color=red,font=6];
-"MainFrame$$Tree_View" -> "MainFrame$$GUI" [color=red,font=6];
-"MainFrame$$Tree_View" -> "MainFrame$$Index_History" [color=red,font=6];
-"MainFrame$$Tree_View" -> "MrPinkMain" [color=red,font=6];
-"MainFrame$$Tree_View" -> "SearchResultTree" [color=red,font=6];
-"MrPinkMain" -> "Indexer" [color=blue,font=6];
-"MrPinkMain" -> "MrPinkMain$$Base" [color=blue,font=6];
-"MrPinkMain" -> "MrPinkMain$$GUI" [color=red,font=6];
-"MrPinkMain" -> "Commandline" [color=red,font=6];
-"MrPinkMain" -> "MrPinkMain$$User_Interface" [color=red,font=6];
-"MrPinkMain$$Base" -> "Indexer" [color=blue,font=6];
-"MrPinkMain$$Base" -> "MrPinkMain" [color=blue,font=6];
-"MrPinkMain$$GUI" -> "MainFrame" [color=red,font=6];
-"MrPinkMain$$GUI" -> "MrPinkMain" [color=red,font=6];
-"MrPinkMain$$GUI" -> "MrPinkMain$$Base" [color=red,font=6];
-"MrPinkMain$$GUI" -> "MrPinkMain$$User_Interface" [color=red,font=6];
-"MrPinkMain$$User_Interface" -> "IndexerException" [color=blue,font=6];
-"MrPinkMain$$User_Interface" -> "MrPinkMain$$Base" [color=blue,font=6];
-"MrPinkMain$$User_Interface" -> "OptionStorage" [color=blue,font=6];
-"MrPinkMain$$User_Interface" -> "UI" [color=blue,font=6];
-"NoDocument" -> "HitComponentLabel" [color=red,font=6];
-"OptionWindow" -> "OptionStorage" [color=blue,font=6];
-"Plain" -> "ContentHandler" [color=red,font=6];
-"SearchResultTree" -> "HitDocument" [color=red,font=6];
-"SearchResultTree" -> "OS" [color=red,font=6];
-"UI" -> "Indexer" [color=blue,font=6];
+"CardException"[label="CardException",shape=ellipse,color=blue,fontcolor=black,style=""];
+"ChargeUI"[label="ChargeUI",shape=ellipse,color=blue,fontcolor=black,style=""];
+"IssueCardUI"[label="IssueCardUI",shape=ellipse,color=blue,fontcolor=black,style=""];
+"LogFile"[label="LogFile",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"LogRecord"[label="LogRecord",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"PayCard"[label="PayCard",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Start"[label="Start",shape=ellipse,color=blue,fontcolor=black,style=""];
+"ChargeUI" -> "PayCard" [color=blue,font=6];
+"IssueCardUI" -> "ChargeUI" [color=blue,font=6];
+"LogFile" -> "CardException" [color="#FF000055", font=6];
+"LogFile" -> "LogRecord" [color="#FF000055", font=6];
+"LogRecord" -> "CardException" [color="#FF000055", font=6];
+"PayCard" -> "CardException" [color="#FF000055", font=6];
+"PayCard" -> "LogFile" [color="#FF000055", font=6];
+"Start" -> "IssueCardUI" [color=blue,font=6];
 subgraph cluster_0{
 label = "Variability";
-"ButtonListener"
-"ButtonListener$$GUI"
-"ButtonListener$$Index_History"
-"ButtonListener$$Multi_Directory"
-"ButtonListener$$Single_Directory"
-"Commandline"
-"HTML"
-"History_Indexer"
-"History_Query"
-"HitComponentLabel"
-"HitDocument"
-"Index_History_Selector"
-"Indexer$$Commandline"
-"Indexer$$HTML"
-"Indexer$$Multi_Directory"
-"Indexer$$Single_Directory"
-"Indexer$$TXT"
-"Latex"
-"MainFrame"
-"MainFrame$$GUI"
-"MainFrame$$Index_History"
-"MainFrame$$Multi_Directory"
-"MainFrame$$Normal_View"
-"MainFrame$$Query_History"
-"MainFrame$$Single_Directory"
-"MainFrame$$Tree_View"
-"MrPinkMain$$GUI"
-"NoDocument"
-"Plain"
-"SearchResultTree"
+"LogFile"
+"LogRecord"
 }
 subgraph cluster_1{
 label = "Similarities" ;
-"ContentHandler"
-"Indexer"
-"Indexer$$Base"
-"IndexerException"
-"MrPinkMain"
-"MrPinkMain$$Base"
-"MrPinkMain$$User_Interface"
-"OS"
-"OptionStorage"
-"OptionWindow"
-"UI"
+"CardException"
+"ChargeUI"
+"IssueCardUI"
+"PayCard"
+"Start"
 }
 }
