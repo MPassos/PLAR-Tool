@@ -1,32 +1,79 @@
 digraph G {
-size= "7,7";
+size= "15,15";
 rotate = 180;
-"CardException"[label="CardException",shape=ellipse,color=blue,fontcolor=black,style=""];
-"ChargeUI"[label="ChargeUI",shape=ellipse,color=blue,fontcolor=black,style=""];
-"IssueCardUI"[label="IssueCardUI",shape=ellipse,color=blue,fontcolor=black,style=""];
-"LogFile"[label="LogFile",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
-"LogRecord"[label="LogRecord",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
-"PayCard"[label="PayCard",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Start"[label="Start",shape=ellipse,color=blue,fontcolor=black,style=""];
-"ChargeUI" -> "PayCard" [color=blue,font=6];
-"IssueCardUI" -> "ChargeUI" [color=blue,font=6];
-"LogFile" -> "CardException" [color="#FF000055", font=6];
-"LogFile" -> "LogRecord" [color="#FF000055", font=6];
-"LogRecord" -> "CardException" [color="#FF000055", font=6];
-"PayCard" -> "CardException" [color="#FF000055", font=6];
-"PayCard" -> "LogFile" [color="#FF000055", font=6];
-"Start" -> "IssueCardUI" [color=blue,font=6];
+"CycleWorkSpace"[label="CycleWorkSpace",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"Edge"[label="Edge",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"EdgeIfc"[label="EdgeIfc",shape=ellipse,color=blue,fontcolor=black,style=""];
+"EdgeIter"[label="EdgeIter",shape=ellipse,color=blue,fontcolor=black,style=""];
+"FinishTimeWorkSpace"[label="FinishTimeWorkSpace",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"GlobalVarsWrapper"[label="GlobalVarsWrapper",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"Graph"[label="Graph",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Main"[label="Main",shape=ellipse,color=blue,fontcolor=black,style=""];
+"Neighbor"[label="Neighbor",shape=ellipse,color=blue,fontcolor=black,style=""];
+"NeighborIfc"[label="NeighborIfc",shape=ellipse,color=blue,fontcolor=black,style=""];
+"NumberWorkSpace"[label="NumberWorkSpace",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"Vertex"[label="Vertex",shape=ellipse,color=blue,fontcolor=black,style=""];
+"VertexIter"[label="VertexIter",shape=ellipse,color=blue,fontcolor=black,style=""];
+"WorkSpace"[label="WorkSpace",shape=ellipse,color=blue,fontcolor=black,style=""];
+"WorkSpaceTranspose"[label="WorkSpaceTranspose",shape=ellipse, color="#FF000055", style = dotted,fontcolor=black];
+"CycleWorkSpace" -> "Vertex" [color="#FF000055", font=6];
+"CycleWorkSpace" -> "WorkSpace" [color="#FF000055", font=6];
+"Edge" -> "EdgeIfc" [color="#FF000055", font=6];
+"Edge" -> "Neighbor" [color="#FF000055", font=6];
+"Edge" -> "Vertex" [color="#FF000055", font=6];
+"EdgeIfc" -> "Vertex" [color=blue,font=6];
+"EdgeIter" -> "EdgeIfc" [color=blue,font=6];
+"FinishTimeWorkSpace" -> "Vertex" [color="#FF000055", font=6];
+"FinishTimeWorkSpace" -> "WorkSpace" [color="#FF000055", font=6];
+"Graph" -> "Edge" [color="#FF000055", font=6];
+"Graph" -> "EdgeIfc" [color=blue,font=6];
+"Graph" -> "EdgeIter" [color="#FF000055", font=6];
+"Graph" -> "Neighbor" [color=blue,font=6];
+"Graph" -> "NumberWorkSpace" [color="#FF000055", font=6];
+"Graph" -> "Vertex" [color=blue,font=6];
+"Graph" -> "VertexIter" [color=blue,font=6];
+"Graph" -> "WorkSpace" [color=blue,font=6];
+"Graph" -> "FinishTimeWorkSpace" [color="#FF000055", font=6];
+"Graph" -> "WorkSpaceTranspose" [color="#FF000055", font=6];
+"Graph" -> "CycleWorkSpace" [color="#FF000055", font=6];
+"Main" -> "Graph" [color=blue,font=6];
+"Main" -> "Vertex" [color=blue,font=6];
+"Main" -> "VertexIter" [color=blue,font=6];
+"Neighbor" -> "Edge" [color="#FF000055", font=6];
+"Neighbor" -> "Vertex" [color=blue,font=6];
+"Neighbor" -> "EdgeIfc" [color="#FF000055", font=6];
+"Neighbor" -> "NeighborIfc" [color="#FF000055", font=6];
+"NumberWorkSpace" -> "Vertex" [color="#FF000055", font=6];
+"NumberWorkSpace" -> "WorkSpace" [color="#FF000055", font=6];
+"Vertex" -> "EdgeIfc" [color="#FF000055", font=6];
+"Vertex" -> "EdgeIter" [color="#FF000055", font=6];
+"Vertex" -> "GlobalVarsWrapper" [color="#FF000055", font=6];
+"Vertex" -> "Neighbor" [color=blue,font=6];
+"Vertex" -> "VertexIter" [color=blue,font=6];
+"Vertex" -> "WorkSpace" [color=blue,font=6];
+"VertexIter" -> "Vertex" [color=blue,font=6];
+"WorkSpace" -> "Vertex" [color=blue,font=6];
+"WorkSpaceTranspose" -> "Vertex" [color="#FF000055", font=6];
+"WorkSpaceTranspose" -> "WorkSpace" [color="#FF000055", font=6];
 subgraph cluster_0{
 label = "Variability";
-"LogFile"
-"LogRecord"
+"CycleWorkSpace"
+"Edge"
+"FinishTimeWorkSpace"
+"GlobalVarsWrapper"
+"NumberWorkSpace"
+"WorkSpaceTranspose"
 }
 subgraph cluster_1{
 label = "Similarities" ;
-"CardException"
-"ChargeUI"
-"IssueCardUI"
-"PayCard"
-"Start"
+"EdgeIfc"
+"EdgeIter"
+"Graph"
+"Main"
+"Neighbor"
+"NeighborIfc"
+"Vertex"
+"VertexIter"
+"WorkSpace"
 }
 }

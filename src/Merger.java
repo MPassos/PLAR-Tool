@@ -218,14 +218,15 @@ public class Merger {
         int graphsize = size1 + size2;
         int i, j;
         i = j = 0;
-        String comp1, comp2, dep1, dep2, var, com;
-        var = com = "";
+        String comp1, comp2, dep1, dep2, var1,var2, com;
+        var1 = var2 = com = "";
 
         ebuffer1.write("digraph G {\n" + "size= \"" + graphsize + "," + graphsize + "\";\n" + "rotate = 180;\n");
         while (i < size1 && j < size2) {
             comp1 = (String) no1.get(i);
             comp2 = (String) no2.get(j);
 
+            /**
             if (comp1.compareTo(comp2) < 0) {
                 ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=purple, style = dotted,fontcolor=black];\n");
                 var += "\"" + no1.get(i) + "\";\n";
@@ -241,9 +242,27 @@ public class Merger {
                 ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=green, style = dashed,fontcolor=black];\n");
                 var += "\"" + no2.get(j) + "\";\n";
                 j++;
+            }**/
+            
+             if (comp1.compareTo(comp2) < 0) {
+                ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=red,fontcolor=black];\n");
+                var1 += "\"" + no1.get(i) + "\";\n";
+                i++;
+            }
+            if (comp1.compareTo(comp2) == 0) {
+                ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=blue,fontcolor=black,style=\"\"];\n");
+                com += "\"" + no1.get(i) + "\";\n";
+                i++;
+                j++;
+            }
+            if (comp1.compareTo(comp2) > 0) {
+                ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=red,fontcolor=black];\n");
+                var2 += "\"" + no2.get(j) + "\";\n";
+                j++;
             }
         }
-
+        
+        /**
         while (i < no1.size()) {
             comp1 = (String) no1.get(i);
             ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=purple,fontcolor=black];\n");
@@ -257,7 +276,22 @@ public class Merger {
             var += "\"" + no2.get(j) + "\";\n";
             j++;
         }
+        **/
+        
+        while (i < no1.size()) {
+            comp1 = (String) no1.get(i);
+            ebuffer1.write("\"" + comp1 + "\"" + "[label=" + "\"" + comp1 + "\"" + ",shape=ellipse,color=red,fontcolor=black];\n");
+            var1 += "\"" + no1.get(i) + "\";\n";
+            i++;
+        }
 
+        while (j < no2.size()) {
+            comp2 = (String) no2.get(j);
+            ebuffer1.write("\"" + comp2 + "\"" + "[label=" + "\"" + comp2 + "\"" + ",shape=ellipse,color=red,fontcolor=black];\n");
+            var2 += "\"" + no2.get(j) + "\";\n";
+            j++;
+        }
+        
         i = j = 0;
 
         while (i < dependencias1.size() && j < dependencias2.size()) {
@@ -267,7 +301,7 @@ public class Merger {
             dep2 = aux2.getNode() + " " + aux2.getDepends();
 
             if (dep1.compareTo(dep2) < 0) {
-                ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=purple, style = dotted,font=6];\n");
+                ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=red,font=6];\n");
                 i++;
             }
             if (dep1.compareTo(dep2) == 0) {
@@ -277,35 +311,39 @@ public class Merger {
             }
 
             if (dep1.compareTo(dep2) > 0) {
-                ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=green, style = dashed,font=6];\n");
+                ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=red, font=6];\n");
                 j++;
             }
         }
 
         while (i < dependencias1.size()) {
             Node aux1 = (Node) dependencias1.get(i);
-            ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=purple,font=6];\n");
+            ebuffer1.write("\"" + aux1.getNode() + "\"" + " -> " + "\"" + aux1.getDepends() + "\" " + "[color=red,font=6];\n");
             i++;
         }
 
         while (j < dependencias2.size()) {
             Node aux2 = (Node) dependencias2.get(j);
-            ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=green,font=6];\n");
+            ebuffer1.write("\"" + aux2.getNode() + "\"" + " -> " + "\"" + aux2.getDepends() + "\" " + "[color=red,font=6];\n");
             j++;
         }
 
-        ebuffer1.write("subgraph cluster_0{\nlabel = \"Variability\";\n");
-        ebuffer1.write(var);
+        ebuffer1.write("subgraph cluster_0{\nlabel = \"Product 1\";\n");
+        ebuffer1.write(var1);
+        ebuffer1.write("}\n");
+        
+        ebuffer1.write("subgraph cluster_1{\nlabel = \"Product 2\";\n");
+        ebuffer1.write(var2);
         ebuffer1.write("}\n");
 
-        ebuffer1.write("subgraph cluster_1{\nlabel = \"Similarities\" ;\n");
+        ebuffer1.write("subgraph cluster_2{\nlabel = \"Similarities\" ;\n");
         ebuffer1.write(com);
         ebuffer1.write("}\n");
 
-        ebuffer1.write("subgraph cluster_2{\nlabel = \"Legend\" ;\n");
-        ebuffer1.write("\"Product 1\"[color=purple, style = dotted];\n ");
-        ebuffer1.write("\"Product 2\"[color=green, style = dashed];\n ");
-        ebuffer1.write("}\n");
+        //ebuffer1.write("subgraph cluster_2{\nlabel = \"Legend\" ;\n");
+        //ebuffer1.write("\"Product 1\"[color=purple, style = dotted];\n ");
+        //ebuffer1.write("\"Product 2\"[color=green, style = dashed];\n ");
+        //ebuffer1.write("}\n");
         ebuffer1.write("}");
         ebuffer1.close();
     }
@@ -596,16 +634,19 @@ public class Merger {
        {
         Runtime.getRuntime().exec("cmd /c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
         Runtime.getRuntime().exec("cmd /c copy resources\\Interactive.html output ");
+        Runtime.getRuntime().exec("cmd /c copy resources\\jquery.graphviz.svg.js output ");
        }else
        if(System.getProperty("os.name").startsWith("Linux"))
        {
         Runtime.getRuntime().exec("sh -c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
         Runtime.getRuntime().exec("sh -c cp resources\\Interactive.html output ");
+        Runtime.getRuntime().exec("cmd /c copy resources\\jquery.graphviz.svg.js output ");
        }else
        if(System.getProperty("os.name").startsWith("Mac"))
        {
         Runtime.getRuntime().exec("sh -c cd output && dot -Tsvg mergedgraph.dot -o svggraph.svg");
         Runtime.getRuntime().exec("sh -c cp resources\\Interactive.html output ");
+        Runtime.getRuntime().exec("cmd /c copy resources\\jquery.graphviz.svg.js output ");
        }
     }
 

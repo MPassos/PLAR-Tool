@@ -1,26 +1,24 @@
 digraph G {
 size= "6,6";
 rotate = 180;
-"BasicRectangle"[label="BasicRectangle",shape=ellipse,color=green,fontcolor=black,style=""];
+"BasicRectangle"[label="BasicRectangle",shape=ellipse,color=red,fontcolor=black];
 "Canvas"[label="Canvas",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Line"[label="Line",shape=ellipse,color=purple,fontcolor=black,style=""];
+"Line"[label="Line",shape=ellipse,color=red,fontcolor=black];
 "Main"[label="Main",shape=ellipse,color=blue,fontcolor=black,style=""];
-"Canvas" -> "BasicRectangle" [color=green,font=6];
-"Canvas" -> "Line" [color=purple,font=6];
-"Main" -> "Canvas" [color="#3366FF55",font=6];
+"Canvas" -> "BasicRectangle" [color=red, font=6];
+"Canvas" -> "Line" [color=red,font=6];
+"Main" -> "Canvas" [color=blue,font=6];
 subgraph cluster_0{
-label = "Variability";
-"BasicRectangle";
+label = "Product 1";
 "Line";
 }
 subgraph cluster_1{
+label = "Product 2";
+"BasicRectangle";
+}
+subgraph cluster_2{
 label = "Similarities" ;
 "Canvas";
 "Main";
 }
-subgraph cluster_2{
-label = "Legend" ;
-"Product 1"[color=purple];
- "Product 2"[color=green];
- }
 }
