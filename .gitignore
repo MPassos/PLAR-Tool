@@ -1,2 +1,5 @@
 /dist/
 /build/
+
+#OS junk files
+*.DS_Store
