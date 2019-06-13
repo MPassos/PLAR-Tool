@@ -32,7 +32,7 @@ If you like to clone from source, you can do it with very simple steps.
 First, clone the repo:
 
 ```
-> git https://github.com/MPassos/PLAR-Tool.git
+> git clone https://github.com/MPassos/PLAR-Tool.git
 > cd PLAR-Tool
 ```
 
@@ -51,11 +51,11 @@ Fork the project and follow the instructions on how to get started with [source 
 - inside you will find a "small project" that we created to test PLAR-tool. 
 
 ## Contributors
-PLAR-tool was developed by Researchers from the Federal University of Bahia (UFBA) and Federal Institute of Bahia (IFBA), within the context of the [Software Engineering Lab (LES)](http://wiki.dcc.ufba.br/LES/), [aSide @ UFBA](http://wiki.dcc.ufba.br/Aside/) software design and evolution group, and [RiSE Labs](http://www.rise.com.br/riselabs/) - Reuse in Software Engineering.
+PLAR-tool was developed by researchers from the Federal University of Bahia (UFBA) and Federal Institute of Bahia (IFBA), within the context of the [Software Engineering Lab (LES)](http://wiki.dcc.ufba.br/LES/), [aSide @ UFBA](http://wiki.dcc.ufba.br/Aside/) software design and evolution group, and [RiSE Labs](http://www.rise.com.br/riselabs/) - Reuse in Software Engineering.
 
 For more information and collaboration contact: 
-[Mateus Passos](mailto:mpsc.comp@gmail.com)
-[Crescencio Lima](mailto:crescencio@gmail.com)
+- [Mateus Passos](mailto:mpsc.comp@gmail.com)
+- [Crescencio Lima](mailto:crescencio@gmail.com)
 
 
 ## License
