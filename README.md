@@ -12,7 +12,7 @@ For additional information, please read the [paper.](https://www.researchgate.ne
 
 ## How to cite PLAR tool
 
-If you are using RefactoringMiner in your research, please cite the following paper:
+If you are using PLAR-tool in your research, please cite the following paper:
 
 ```
 @inproceedings{Cardoso2017,
