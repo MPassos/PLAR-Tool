@@ -2,10 +2,10 @@
 
 Product Line Architecture Recovery (PLAR) tool uses information extracted from variants. PLAR-tool provides different architectural views, and a set of metrics aimed to assess the quality of the recovered information. Such measurements may support the maintenance, evolution, and comprehension of SPL projects.
 
-For additional information, please read the [paper](https://www.researchgate.net/publication/320101800_PLAR_Tool_-_A_Sofware_Product_Line_Architecture_Recovery_Tool)
+For additional information, please read the [paper.](https://www.researchgate.net/publication/320101800_PLAR_Tool_-_A_Sofware_Product_Line_Architecture_Recovery_Tool)
 
 ## Table of contents
-* **[How to cite PLAR tool](#how-to-cite-plartool)**
+* **[How to cite PLAR-tool](#how-to-cite-plar-tool)**
 * **[Source code](#source-code)**
 * **[Tutorial](#tutorial)**
 * **[How to contribute](#how-to-contribute)**
@@ -24,7 +24,7 @@ For additional information, please read the [paper](https://www.researchgate.net
 ```
 
 
-## SOURCE CODE
+## Source Code
 
 If you like to clone from source, you can do it with very simple steps.
 First, clone the repo:
@@ -35,7 +35,7 @@ First, clone the repo:
 ```
 
 
-## TUTORIAL
+## Tutorial
 For information on how to use PLAR-tool, refer to the official documentation:
 
 - [https://github.com/MPassos/PLAR-Tool/wiki](https://github.com/MPassos/PLAR-Tool/wiki)
@@ -43,13 +43,12 @@ For information on how to use PLAR-tool, refer to the official documentation:
 
 
 ## How to contribute
-Fork the project and follow the instructions on how to get started with [source code](#source-code). I tend to not accept a Pull Request without tests, so:
+Fork the project and follow the instructions on how to get started with [source code](#source-code). We tend to not accept a Pull Request without tests, so:
 
 - unzip the `PLAR-Tool-master.zip` zip file
-- inside you will find a "small project" that we created to test PLAR tool. 
+- inside you will find a "small project" that we created to test PLAR-tool. 
 
 
 ## License
----------------------------
 License:<a href="http://www.gnu.org/licenses/gpl.html" target="blank"> GNU GPL v3</a><br>
 Content License: <a href="http://creativecommons.org/licenses/by-sa/4.0/" target = "blank">Creative Commons 4.0 BY</a>
