@@ -1,0 +1,14 @@
+@startuml
+skinparam package{
+BackgroundColor<<Sim>> lightBlue
+ArrowColor<<Sim>> Blue
+BackgroundColor<<Var>> lightPink
+ArrowColor<<Var>> Red
+}
+
+package package_Y <<Var>>
+
+package package_X <<Sim>>
+
+package_X --> package_Y
+@enduml
